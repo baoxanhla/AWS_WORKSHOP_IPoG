@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head>
+  <head><script src="/AWS_WORKSHOP_IPoG/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS_WORKSHOP_IPoG/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.151.0">
@@ -8,28 +8,28 @@
   name="description"
   content=""
 />
-<meta name="author" content="thienlh@thienlu.com" />
+<meta name="author" content="baonq.ai2004@gmail.com" />
 
     <link rel="icon" href="../../../images/favicon.png" type="image/png">
 
     <title>Worklog Tuần 2 :: Báo cáo thực tập</title>
 
     
-    <link href="../../../css/nucleus.css?1760198969" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1760198969" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1760198969" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1760198969" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1760198969" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1760198969" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1760198969" rel="stylesheet">
-    <link href="../../../css/theme.css?1760198969" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1760198969" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1760534430" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1760534430" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1760534430" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1760534430" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1760534430" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1760534430" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1760534430" rel="stylesheet">
+    <link href="../../../css/theme.css?1760534430" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1760534430" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1760198969" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1760534430" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1760198969"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1760534430"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1760198969"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1760198969"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1760534430"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1760534430"></script>
 <script type="text/javascript">
     
-        var baseurl = "https:\/\/example.org\/\/vi";
+        var baseurl = "http:\/\/localhost:1313\/AWS_WORKSHOP_IPoG\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1760198969"></script>
+<script type="text/javascript" src="../../../js/search.js?1760534430"></script>
  
   </div>
 
@@ -851,14 +851,14 @@
                        
                 <option
                   id="en"
-                  value="https://example.org/1-worklog/1.2-week2/"
+                  value="http://localhost:1313/AWS_WORKSHOP_IPoG/1-worklog/1.2-week2/"
                 >
                   English
                 </option>
                             
                 <option
                   id="vi"
-                  value="https://example.org/vi/1-worklog/1.2-week2/"
+                  value="http://localhost:1313/AWS_WORKSHOP_IPoG/vi/1-worklog/1.2-week2/"
                   selected
                 >
                   Tiếng Việt
@@ -1019,8 +1019,9 @@
 
 	<h3 id="mục-tiêu-tuần-2">Mục tiêu tuần 2:</h3>
 <ul>
-<li>Tìm hiểu cấu hình và cách sử dụng của Amazon Virtual Private Cloud (Amazon VPC)</li>
-<li></li>
+<li>Thiết kế và triển khai VPC theo tiêu chuẩn AWS Well-Architected Framework</li>
+<li>Cấu hình các thành phần bảo mật mạng quan trọng</li>
+<li>Thiết lập kết nối an toàn giữa môi trường on-premise và AWS</li>
 </ul>
 <h3 id="các-công-việc-cần-triển-khai-trong-tuần-này">Các công việc cần triển khai trong tuần này:</h3>
 <table>
@@ -1036,35 +1037,35 @@
   <tbody>
       <tr>
           <td>2</td>
-          <td>- Tìm hiểu về kiến trúc và phạm vi của VPC <br>  + Region <br>  +Availability Zones (AZ) <br> - Tìm hiểu các thành phần trong VPC <br>  + Subnets <br>  + Route Table (rtb) <br>  + Internet Gateway (IGW) <br>  + NAT Gateway <br> - Tìm hiểu về tường lửa trong VPC <br>  + Security Group <br>  + Network ACLs <br>  + Cách dùng Resource Map <br></td>
+          <td>- Tìm hiểu Amazon Virtual Private Cloud (Amazon VPC), Kiến trúc và Phạm vi <br>  + AWS Region <br>  + Availability Zones (AZ) <br>  + Classless Inter-Domain Routing (CIDR) <br> - Tìm hiểu về các thành phần cơ bản của Amazon VPC <br>  + Subnet <br>  + Route Table <br>  + Internet Gateway <br>  + NAT Gateway <br> - Tìm hiểu về tường lửa trong VPC <br>  + Security Group <br>  + Network ACLs <br>  + Cách dùng Resource Map <br> - <strong>Thực hành:</strong> <br>  + Tạo VPC <br>  + Tạo Subnet <br>  + Tạo Internet gateway <br>  + Tạo Route Table <br>  + Tạo Security Group <br>  + Kích hoạt VPC Flow Logs</td>
           <td>11/08/2025</td>
           <td>11/08/2025</td>
           <td></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- <strong>Thực hành:</strong> <br>  + <br>  + Compute <br>  + Storage <br>  + Networking <br>  + Database <br>  + &hellip; <br></td>
-          <td>12/08/2025</td>
-          <td>12/08/2025</td>
+          <td>- Tìm hiểu EC2 cơ bản <br>  + Instance types <br>  + AMI <br>  + Key pair <br>  + Thiết lập Network <br>  - Các cách remote SSH vào EC2 <br>  - Tìm hiểu Elastic IP <br> - Tìm hiểu VPC Reachability Analyzer <br> - Tìm hiểu AWS Systems Manager Session Manager và Amazon CloudWatch</td>
+          <td>13/08/2025</td>
+          <td>13/08/2025</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console &amp; AWS CLI <br> - <strong>Thực hành:</strong> <br>  + Tạo AWS account <br>  + Cài AWS CLI &amp; cấu hình <br>   + Cách sử dụng AWS CLI</td>
-          <td>13/08/2025</td>
-          <td>13/08/2025</td>
+          <td>- <strong>Thực hành:</strong> Triển khai Amazon EC2 với multi-AZ, tạo NAT Gateways và Amazon CloudWatch cho VPC <br>  + Tạo máy chủ EC2 Public và Private Subnet <br>  + Kết nối SSH  <br>  + Tạo và triển khai NAT Gateway <br>  + Sử dụng Reachability Analyzer <br>  + Tạo EC2 Instance Connect Endpoint <br>  + Sử dụng Session Manager <br>  + Triển khai CloudWatch Monitoring cho Tài nguyên VPC <br>  + Dọn dẹp tài nguyên: Terminate các EC2 Instance, Xóa NAT Gateway và Elastic IP Address, Xóa VPC Endpoints</td>
+          <td>12/08/2025</td>
+          <td>12/08/2025</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>5</td>
-          <td>- Tìm hiểu EC2 cơ bản: <br>  + Instance types <br>  + AMI <br>  + EBS <br>  + &hellip; <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br></td>
+          <td>- Tìm hiểu AWS Site-to-Site VPN  <br>  + AWS Site-to-Site VPN <br>  + Virtual Private Gateway <br>  + Customer Gateway <br>  + AWS VPN Tunnel <br> - Tìm hiểu Transit Gateway <br> - Tìm hiểu về VPC Peering</td>
           <td>14/08/2025</td>
           <td>15/08/2025</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>6</td>
-          <td>- <strong>Thực hành:</strong> <br>  + Tạo EC2 instance <br>  + Kết nối SSH <br>  + Gắn EBS volume</td>
+          <td>- <strong>Thực hành:</strong>: <br>  + Cấu hình Site to Site VPN: Tạo môi trường VPN và cấu hình kết nối VPN <br>  + Thiết lập VPC Peering <br>  + Thiết lập Transit Gateway</td>
           <td>15/08/2025</td>
           <td>15/08/2025</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
@@ -1074,46 +1075,48 @@
 <h3 id="kết-quả-đạt-được-tuần-2">Kết quả đạt được tuần 2:</h3>
 <ul>
 <li>
-<p>Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản:</p>
+<p>Tạo và cấu hình thành công VPC theo chuẩn AWS Well-Architected Framework:</p>
 <ul>
-<li>Compute</li>
-<li>Storage</li>
-<li>Networking</li>
-<li>Database</li>
-<li>&hellip;</li>
+<li>VPC chính với CIDR IP (10.0.0.0/16)</li>
+<li>Tạo 2 Subnet: Public và Private nằm ở hai Availability Zone khác nhau (multi-AZ).</li>
+<li>Route Table, Internet Gateway, và NAT Gateway được cấu hình đầy đủ để đảm bảo các EC2 trong Private Subnet vẫn có thể truy cập Internet an toàn.</li>
+<li>Kích hoạt VPC Flow Logs và theo dõi lưu lượng mạng trên CloudWatch Logs.</li>
 </ul>
 </li>
 <li>
-<p>Đã tạo và cấu hình AWS Free Tier account thành công.</p>
-</li>
-<li>
-<p>Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.</p>
-</li>
-<li>
-<p>Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:</p>
+<p>Biết triển khai và quản lý EC2:</p>
 <ul>
-<li>Access Key</li>
-<li>Secret Key</li>
-<li>Region mặc định</li>
-<li>&hellip;</li>
+<li>Khởi tạo EC2 instance trong Public và Private Subnet, gán Elastic IP cho máy chủ Public.</li>
+<li>Truy cập EC2 qua SSH, Instance Connect, và Session Manager (không cần Public IP).</li>
+<li>Biết giám sát hoạt động EC2 thông qua Amazon CloudWatch (metric CPU, network, status check).</li>
 </ul>
 </li>
 <li>
-<p>Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:</p>
+<p>Cấu hình được Security Group và Network ACLs để bảo mật</p>
 <ul>
-<li>Kiểm tra thông tin tài khoản &amp; cấu hình</li>
-<li>Lấy danh sách region</li>
-<li>Xem dịch vụ EC2</li>
-<li>Tạo và quản lý key pair</li>
-<li>Kiểm tra thông tin dịch vụ đang chạy</li>
-<li>&hellip;</li>
+<li>Security Group – bảo vệ cấp instance.</li>
+<li>Network ACL – bảo vệ cấp subnet.</li>
 </ul>
 </li>
 <li>
-<p>Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.</p>
+<p>Biết được CloudWatch Alarm để cảnh báo khi EC2 có lưu lượng hoặc CPU bất thường.</p>
 </li>
 <li>
-<p>&hellip;</p>
+<p>Nắm được và thực hành cấu hình AWS Site-to-Site VPN để kết nối an toàn giữa AWS và on-premises:</p>
+<ul>
+<li>Tạo Virtual Private Gateway (VGW) gắn với VPC.</li>
+<li>Tạo Customer Gateway (CGW) mô phỏng on-premise environment.</li>
+<li>Thiết lập IPSec Tunnel hoạt động ổn định giữa AWS và CGW.</li>
+</ul>
+</li>
+<li>
+<p>Thực hành VPC Peering để kết nối giữa hai VPC riêng biệt trong cùng Region.</p>
+</li>
+<li>
+<p>Tìm hiểu và thiết lập thử nghiệm AWS Transit Gateway.</p>
+</li>
+<li>
+<p>Hiểu và áp dụng được AWS Systems Manager trong quản lý hạ tầng không cần SSH trực tiếp.</p>
 </li>
 </ul>
 
@@ -1817,19 +1820,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1760198969"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1760198969"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1760198969"></script>
-    <script src="../../../js/jquery.sticky.js?1760198969"></script>
-    <script src="../../../js/featherlight.min.js?1760198969"></script>
-    <script src="../../../js/highlight.pack.js?1760198969"></script>
+    <script src="../../../js/clipboard.min.js?1760534430"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1760534430"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1760534430"></script>
+    <script src="../../../js/jquery.sticky.js?1760534430"></script>
+    <script src="../../../js/featherlight.min.js?1760534430"></script>
+    <script src="../../../js/highlight.pack.js?1760534430"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1760198969"></script>
-    <script src="../../../js/learn.js?1760198969"></script>
-    <script src="../../../js/hugo-learn.js?1760198969"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1760534430"></script>
+    <script src="../../../js/learn.js?1760534430"></script>
+    <script src="../../../js/hugo-learn.js?1760534430"></script>
 
-    <link href="../../../mermaid/mermaid.css?1760198969" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1760198969"></script>
+    <link href="../../../mermaid/mermaid.css?1760534430" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1760534430"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
