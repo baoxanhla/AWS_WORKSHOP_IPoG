@@ -6,21 +6,21 @@ pre: " <b> 2. </b> "
 ---
 
 
-# PromptEats Recommender Platform For Prompt-IPoG
+# FoodMind Recommender Platform For Prompt-IPoG
 ## Giải pháp AWS Serverless hợp nhất cho gợi ý quán ăn thông minh dựa trên trải nghiệm người dùng 
 
 ### 1. Tóm tắt điều hành  
-AI Food Recommender Platform là nền tảng web thông minh được thiết kế để giúp người dùng khám phá quán ăn phù hợp dựa trên dữ liệu thực tế từ đánh giá và cảm xúc của khách hàng. Nền tảng sử dụng mô hình AI cảm xúc (Sentiment Analysis) được triển khai trên Amazon SageMaker, kết hợp với AWS Bedrock để xử lý dữ liệu thô (đánh giá của người dùng, mô tả quán ăn), tạo ra cơ sở dữ liệu chuẩn hóa phục vụ cho việc gợi ý.
+**AI Food Recommender Platform** là nền tảng web thông minh được thiết kế để giúp người dùng khám phá quán ăn phù hợp dựa trên dữ liệu thực tế từ đánh giá và cảm xúc của khách hàng. Nền tảng sử dụng mô hình AI cảm xúc (Sentiment Analysis) được triển khai trên Amazon SageMaker, kết hợp với AWS Bedrock để xử lý dữ liệu thô (đánh giá của người dùng, mô tả quán ăn), tạo ra cơ sở dữ liệu chuẩn hóa phục vụ cho việc gợi ý.
 
 Giao diện web được xây dựng trên AWS Amplify (Next.js), cho phép người dùng tìm kiếm và khám phá quán ăn thông qua thanh tìm kiếm thông minh dựa trên embedding. Dữ liệu được lưu trữ và truy vấn qua Amazon RDS, đảm bảo hiệu năng cao và khả năng mở rộng linh hoạt.
 Giải pháp tập trung vào sự kết hợp giữa AI và dữ liệu thực tế để hỗ trợ ra quyết định tìm quán ăn dựa trên cảm nhận, trải nghiệm và sở thích. 
 
 ### 2. Tuyên bố vấn đề  
 **Vấn đề hiện tại**  
-Các nền tảng đánh giá quán ăn hiện nay như Google Maps hay Foody có lượng dữ liệu lớn nhưng chưa cung cấp trải nghiệm tìm kiếm “theo cảm xúc” hoặc “theo trải nghiệm cá nhân”. Người dùng phải đọc hàng chục bình luận mới có thể cảm nhận được chất lượng phục vụ, món ăn hoặc không gian. Việc phân tích cảm xúc và mô tả dữ liệu vẫn còn thủ công, thiếu khả năng cá nhân hóa.
+Trong bối cảnh số lượng quán ăn ngày càng tăng, việc tìm kiếm một địa điểm phù hợp với sở thích và nhu cầu cá nhân trở nên khó khăn. Nhiều ứng dụng như Google Maps hiện chủ yếu hiển thị danh sách quán ăn dựa trên xếp hạng hoặc quảng cáo, chưa thực sự mang lại trải nghiệm tìm kiếm cá nhân hóa. Người dùng phải đọc hàng chục bình luận mới có thể cảm nhận được chất lượng phục vụ, món ăn hoặc không gian. Việc phân tích cảm xúc và mô tả dữ liệu vẫn còn thủ công, thiếu khả năng cá nhân hóa.
 
 **Giải pháp** 
-Nền tảng AI Food Recommender sử dụng dữ liệu từ những đánh giá của người dùng của các quán ăn trên Google Map, sau đó:
+Nền tảng AI FoodMind Recommender sử dụng dữ liệu từ những đánh giá của người dùng của các quán ăn trên Google Map, sau đó:
 - **Amazon S3** lưu dữ liệu thô đã được thu thâp về   
 - **AWS Bedrock** xử lý dữ liệu thô để tạo mô tả, embedding, và trích xuất yếu tố liên quan (loại món, cảm xúc, chất lượng phục vụ, mức giá...).
 - **Amazon SageMaker** triển khai mô hình cảm xúc (Sentiment Analysis) lấy từ Hugging Face để đánh giá sentiment trong các bình luận.
@@ -32,6 +32,7 @@ Nền tảng AI Food Recommender sử dụng dữ liệu từ những đánh gi�
 - **AWS Lambda** và **API Gateway** kết nối frontend – backend – AI model.
 
 Hệ thống cho phép người dùng tìm kiếm bằng ngôn ngữ tự nhiên như “phở ngon, phục vụ nhanh ở quận 3”, và nhận kết quả phù hợp dựa trên cảm xúc, chất lượng, và mô tả thực tế.
+
 **Lợi ích và hoàn vốn đầu tư (ROI)**  
 
 - Tối ưu hóa trải nghiệm tìm kiếm quán ăn theo cảm xúc thay vì chỉ theo rating.
@@ -45,11 +46,9 @@ Hệ thống cho phép người dùng tìm kiếm bằng ngôn ngữ tự nhiên
 - Chi phí ước tính: khoảng 15–20 USD/tháng.
 
 ### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+Nền tảng áp dụng kiến trúc AI-as-a-Service kết hợp AWS Serverless, đảm bảo khả năng mở rộng linh hoạt, chi phí tối ưu và dễ bảo trì. Dữ liệu được thu thập lưu trữ tạm thời trong Amazon S3, sau đó được xử lý bởi AWS Lambda kết hợp AWS Bedrock để chuẩn hóa, sinh mô tả và tạo embedding. Amazon SageMaker được sử dụng để phân tích cảm xúc trong bình luận, kết quả được lưu trữ trong Amazon RDS. AWS Amplify lưu trữ giao diện web Next.js và Amazon Cognito đảm bảo xác thực người dùng an toàn. Kiến trúc được trình bày chi tiết bên dưới:
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architectur.jpeg)
-
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architectur.jpeg)
+![FoodMind Recommender Platform Architecture](/images/2-Proposal/Architecture.png)
 
 **Dịch vụ AWS sử dụng**    
 - **AWS Lambda**: Xử lý logic ứng dụng và gọi các dịch vụ AI (3 hàm).

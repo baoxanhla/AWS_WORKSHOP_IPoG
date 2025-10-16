@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/'
 relativeURLs = true
 canonifyURLs = true
 
@@ -15,7 +15,7 @@ home = [ "HTML", "RSS", "JSON"]
   # Git hub repo link
   editURL = ""
   description = ""
-  author = "thienlh@thienlu.com"
+  author = "baonq.ai2004@gmail.com"
   showVisitedLinks = true
   disableBreadcrumb = false
   disableNextPrev = false
