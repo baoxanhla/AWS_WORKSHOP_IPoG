@@ -5,117 +5,122 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+# Summary Report: “Cloud Day”
 
 ### Event Objectives
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+- Introduce the trend of AI development in Vietnam and its economic potential.  
+- Present the evolution from **Generative AI** to **Agentic AI**.  
+- Showcase AWS solutions like **Amazon Bedrock**, **AgentCore**, and **SageMaker Unified Studio** for building, deploying, and operating AI agents.  
 
 ### Speakers
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+- **<Add speaker names here>**  
+- **<Add more if needed>**
+
+---
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+#### Impact of AI on Vietnam's Economy
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+- AI could contribute **USD 120–130 billion to Vietnam’s GDP** by 2040 (~25%).  
+- The AI market is valued at **USD 750 million**, growing **15–18% annually**.  
+- Vietnam has **765 AI startups**, ranking **2nd in ASEAN**.  
+- Great potential, but still in an **early stage** — requires infrastructure, talent, and policy development.  
 
-#### Transitioning to modern application architecture – Microservices
+#### Evolution: From AI to Agentic AI
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+- **Generative AI Assistants → Generative AI Agents → Agentic AI Systems**.  
+- AI systems are becoming **less dependent on human supervision**.  
+- **Multi-agent systems** allow agents to collaborate to solve complex tasks.  
+- The trend is toward **higher automation and lower human intervention**.  
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+#### Applications of Agentic AI in Organizations
 
-#### Domain-Driven Design (DDD)
+- Improve **workplace productivity**, **automate workflows**, and **drive innovation**.  
+- By **2028**, **33% of enterprise applications** will integrate Agentic AI.  
+- About **15% of daily business decisions** will be automated through AI agents.  
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+#### Amazon Bedrock – The All-in-One AI Platform
 
-#### Event-Driven Architecture
+- Offers diverse foundation models from leading providers.  
+- Enables **customization with private data**, ensuring security and cost control.  
+- Integrates **Responsible AI checks** for safe and ethical use.  
+- Supports fast, scalable, and secure agent deployment and management.  
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+#### Amazon Bedrock AgentCore
 
-#### Compute Evolution
+- A secure, scalable environment for **building and running AI Agents**.  
+- Supports frameworks such as **LangChain, CrewAI, LangGraph, and Strands Agents**.  
+- Manages **short-term and long-term memory** and supports **semantic search**.  
+- Allows easy **integration and tool discovery** for developers.  
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+#### Data & AI Infrastructure
 
-#### Amazon Q Developer
+- Introduces **Amazon SageMaker Unified Studio** – the central hub for data, analytics, and AI development.  
+- Integrates tightly with:  
+  - **Amazon Redshift, Athena, EMR, Glue** – for data processing and storage.  
+  - **Amazon QuickSight** – for data visualization.  
+  - **Amazon Bedrock** – for GenAI development.  
+- Supports **Zero-ETL** integration between **S3 data lakes** and **Redshift data warehouses**.  
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+#### Data Lakehouse Concept
+
+- Supports multiple storage layers: **S3 Tables, Redshift Managed Storage**.  
+- Connects various data sources: **Aurora, DynamoDB, MSK, Kinesis, OpenSearch, Salesforce, SAP, Facebook Ads**, and more.  
+
+---
 
 ### Key Takeaways
 
-#### Design Mindset
+#### On AI and Cloud Mindset
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+- Understood that **Agentic AI** is the next evolution of Generative AI.  
+- Realized that **AI Agents** are not just chatbots but systems capable of taking autonomous actions and decisions.  
+- Learned how **AWS Bedrock** provides a foundation for building enterprise-level AI systems.  
+- Recognized the strategic value of AI agents in **enterprise automation and innovation**.  
 
-#### Technical Architecture
+#### On Technical Architecture
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
+- Learned the relationships between **Bedrock – SageMaker – Redshift – S3** in a unified AI ecosystem.  
+- Understood how AWS manages **memory, tool discovery, and observability** for AI agents.  
 
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
+---
 
 ### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
+- Apply Amazon Berock to an existing project: Use Amazon Titan Embeddings to create an embedding
+- Experiment with **Zero-ETL integration** between **Amazon Redshift and Aurora/DynamoDB**.  
+- Evaluate **Amazon Bedrock AgentCore** for automating workflows with intelligent agents (beyond Lambda-based implementations).  
 
 ### Event Experience
 
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
+Attending **Cloud Day** was an incredibly insightful experience that gave me a clearer view of how businesses leverage AI to modernize systems and enhance productivity.  
 
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
+#### Learning from Experts
 
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
+- AWS experts deeply explained **Agentic AI** and how it differs from traditional Generative AI.  
+- Through Amazon’s real-world examples, I gained a deeper understanding of **multi-agent system design** and workflow optimization.  
 
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
+#### Hands-on Technical Insights
 
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
+- Explored the technical operation of **Amazon Bedrock AgentCore**, including **memory handling** and **tool integration**.  
+- Observed how **S3 – Redshift – SageMaker** integrate seamlessly for contextual AI data retrieval.  
+- Learned the fundamentals of **Lakehouse architecture** and **Zero-ETL data flow** in practice.  
+
+#### Using Modern Tools
+
+- Discovered how to quickly deploy **Agentic AI systems** on **AWS Bedrock** with security, scalability, and reliability.  
 
 #### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
+
+- **Agentic AI** represents a strategic step toward full enterprise automation.  
+- Modern AI infrastructure must be built on **data-driven and cloud-native architecture**.  
+- AWS is leading the ecosystem with comprehensive tools such as **Bedrock and SageMaker**.  
+- Understood the importance of **AI agents** in enhancing both automation and innovation in modern businesses.  
 
 #### Some event photos
-*Add your event photos here*  
 
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+![Image](/images/2-Proposal/Architecture.png)
+
+> Overall, the event not only provided valuable technical knowledge but also reshaped my mindset on system modernization, design thinking, and effective collaboration between teams.
