@@ -7,14 +7,14 @@ pre: " <b> 2. </b> "
 
 
 # FoodMind Recommender Platform For Prompt-IPoG
-## Giải pháp AWS Serverless hợp nhất cho việc theo dõi và gợi ý bửa ăn cá nhân hóa. 
+## Giải pháp AWS Serverless hợp nhất cho việc theo dõi và gợi ý bữa ăn cá nhân hóa. 
 
 ### 1. Tóm tắt điều hành  
 **FoodMind Recommender Platform** là nền tảng web thông minh được thiết kế để trở thành một trợ lí ăn uống cá nhân thông minh. Nền tảng tự động tính toán calo mục tiêu (TDEE) dựa trên hồ sơ người dùng, sử dụng **AWS Bedrock (AI Tạo sinh)** để cho phép người dùng ghi log bữa ăn bằng ngôn ngữ tự nhiên (ví dụ: "tôi vừa ăn 1 bát phở bò"). Hệ thống cung cấp một tính năng gợi ý bữa ăn (Sáng/Trưa/Tối) thông minh, tự động **"lọc"** các món ăn dựa trên mục tiêu calo và các ràng buộc sức khỏe (ví dụ: "dị ứng", "bệnh gout") của người dùng.
 
-Toàn bộ giải pháp được xây dựng trên **kiến trúc serverless** với giao diện sử dụng AWS Amplify (Frontend), API Gateway, AWS Lambda, và Amazon DynamoDB (Backend). Cho phép người dùng có thể  nhận được gợi ý các món ăn trong ngày dựa trên lượng calo được tính toán theo người dùng sử dụng cần tiêu thụ trong ngày. Dữ liệu được lưu trữ và truy vấn qua Amazon DynamoDB, đảm bảo hiệu năng cao và mở rộng linh hoạt
+Toàn bộ giải pháp được xây dựng trên **kiến trúc serverless** với giao diện sử dụng AWS Amplify (Frontend), API Gateway, AWS Lambda, và Amazon DynamoDB (Backend). Cho phép người dùng có thể  nhận được gợi ý các món ăn trong ngày dựa trên lượng calo được tính toán theo người dùng sử dụng cần tiêu thụ trong ngày. Dữ liệu được lưu trữ và truy vấn qua Amazon DynamoDB, đảm bảo hiệu năng cao và mở rộng linh hoạt.
 
-Giải pháp tập trung vào sự kết hợp giữa AI và dữ liệu thực tế để hỗ trợ ra quyết định tìm món ăn linh hoạt và thiết kế **dashboard** để có thể xem quá trình theo dõi bửa ăn hàng ngày hiệu quả. 
+Giải pháp tập trung vào sự kết hợp giữa AI và dữ liệu thực tế để hỗ trợ ra quyết định tìm món ăn linh hoạt và thiết kế **dashboard** để có thể xem quá trình theo dõi bữa ăn hàng ngày hiệu quả. 
 
 ### 2. Tuyên bố vấn đề  
 **Vấn đề hiện tại**  
@@ -33,12 +33,11 @@ FoodMind Recommender Platform ứng dụng **AI và AWS Cloud** để tự độ
 
 Người dùng chỉ cần nhập thông tin, hệ thống sẽ tự động hiểu, phân tích và đề xuất–gợi ý bữa ăn phù hợp với sức khỏe và mục tiêu cá nhân.
 
-
 **Lợi ích và hoàn vốn đầu tư (ROI)**  
 
 - Tiết kiệm thời gian theo dõi dinh dưỡng, loại bỏ thao tác thủ công.
 - Mang đến trải nghiệm AI thực tế, có tính cá nhân hóa cao.
-- Tạo cơ sở dữ liệu chuẩn hóa cho nghiên cứu về AI trong lĩnh vực ẩm thực và cá nhân hóa bửa ăn.
+- Tạo cơ sở dữ liệu chuẩn hóa cho nghiên cứu về AI trong lĩnh vực ẩm thực và cá nhân hóa bữa ăn.
 - Chi phí thấp nhờ kiến trúc serverless.
 - Dễ mở rộng và tái sử dụng mô hình cho các ứng dụng chăm sóc sức khỏe khác.
 - ROI ước tính: hoàn vốn trong 6 tháng thông qua tiết kiệm thời gian phát triển và tái sử dụng mô hình AI đã có sẵn.
@@ -60,7 +59,7 @@ Nền tảng được xây dựng hoàn toàn trên mô hình **AI-as-a-Service*
 **Amazon DynamoDB:** Lưu trữ dữ liệu người dùng, nhật ký ăn uống, mục tiêu calo, và dữ liệu gợi ý – đảm bảo khả năng mở rộng linh hoạt.
 **AWS Secrets Manager:** Bảo mật thông tin xác thực (API Key, Bedrock credentials) cho Lambda và dịch vụ backend.
 **Amazon CloudWatch & AWS CloudTrail:** Theo dõi log, truy cập và hiệu năng toàn hệ thống; hỗ trợ giám sát và khôi phục sự cố.
-**Amazon S3:** Lưu trữ log
+**Amazon S3:** Lưu trữ log.
 **AWS IAM:** Quản lý phân quyền truy cập chi tiết giữa các dịch vụ và người dùng.
 **Amazon VPC:** Cách ly Lambda trong subnet riêng, đảm bảo kết nối an toàn nội bộ giữa Lambda – DynamoDB – Bedrock.
 
@@ -70,7 +69,7 @@ Nền tảng được xây dựng hoàn toàn trên mô hình **AI-as-a-Service*
 - **Phân phối & Bảo vệ truy cập:** Route 53 định tuyến tên miền, AWS WAF bảo vệ khỏi tấn công web (SQL Injection, DDoS) và CloudFront tăng tốc độ tải nội dung và phân phối toàn cầu.
 - **Giao diện web**: Amplify lưu trữ ứng dụng Next.js.
 - **Ghi nhật ký & gợi ý bữa ăn:** Người dùng nhập dữ liệu (text) lưu vào DynamoDB, Lambda gợi ý món ăn theo số tính toán Calo.
-- **Phân tích bữa ăn:** Lambda gọi Bedrock xử lý thông tin bửa ăn bằng ngôn ngữ tự nhiên của user nhập vào, bóc tách và tìm nhật ký Calo của món và lưu lại DynamoDB nếu món mới  
+- **Phân tích bữa ăn:** Lambda gọi Bedrock xử lý thông tin bữa ăn bằng ngôn ngữ tự nhiên của user nhập vào, bóc tách và tìm nhật ký Calo của món và lưu lại DynamoDB nếu món mới.
 - **Hiển thị dashboard:** Amplify hiển thị biểu đồ calo theo ngày/tuần/tháng sau khi user cập nhật bữa ăn.
 - **Xác thực & bảo mật:** Cognito đảm bảo đăng nhập an toàn và quản lý user.
 - **Giám sát & theo dõi:** Amazon CloudWatch theo dõi log, hiệu năng Lambda, AWS CloudTrail lưu lại lịch sử thao tác và truy cập dịch vụ. 
@@ -79,7 +78,7 @@ Nền tảng được xây dựng hoàn toàn trên mô hình **AI-as-a-Service*
 ### 4. Triển khai kỹ thuật  
 **Các giai đoạn triển khai** 
 - Nghiên cứu và Thiết kế: Thiết kế pipeline AI + Cloud, kiểm tra tính khả thi và vẽ sơ đồ hệ thống AWS (5 Tuần đầu tiên).  
-- Tính toán chi phí và tối ưu giải pháp: Kiểm tra lại chi phí các dịch vụ trong kiến trúc để tối ưu chi phí (Tuần 6)
+- Tính toán chi phí và tối ưu giải pháp: Kiểm tra lại chi phí các dịch vụ trong kiến trúc để tối ưu chi phí (Tuần 6).
 - Phát triển, Kiểm thử và triển khai: Lưu dữ liệu ban đầu, sau đó tạo giao diện wed với Next.js, kiểm thử các luồng tính năng API, tốc độ và vận hành sản phẩm (Tuần 7 - tuần 11).  
 
 **Yêu cầu kỹ thuật**  
@@ -93,7 +92,7 @@ Nền tảng được xây dựng hoàn toàn trên mô hình **AI-as-a-Service*
 - *Sau triển khai*: Theo dõi, cải tiến hệ thống gợi ý và mở rộng dữ liệu trong vòng 1 năm.
 
 ### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
+Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).
 Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
 
 **Chi phí hạ tầng**
@@ -110,11 +109,11 @@ Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.p
 
 - AWS Bedrock: 3,00-500 USD/tháng  ( vài nghìn token/tháng).
 
-- CloudWatch + CloudTrail + IAM etc: ~ 0.10-USD
+- CloudWatch + CloudTrail + IAM etc: ~ 0.10-USD.
 
 - Amazon Cognito: 0.00 USD/tháng ( <50 người dùng hoạt động (Free Tier)).
 
-**Tổng**:  ~4-6 USD/tháng, ~50-75 USD/12 tháng
+**Tổng**:  ~4-6 USD/tháng, ~50-75 USD/12 tháng.
 
 ### 7. Đánh giá rủi ro  
 *Ma trận rủi ro*    
@@ -127,7 +126,7 @@ Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.p
 - Sai lệch AI: Dùng "prompt engineering" kỹ lưỡng.
 - Quá tải request API: Giới hạn truy cập qua API Gateway.
 - Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
-- Logic: Điều chình code kĩ lưỡng với các hàm labda.
+- Logic: Điều chình code kĩ lưỡng với các hàm lambda.
 
 *Kế hoạch dự phòng*  
 - Quay lại thu thập thủ công nếu AWS gặp sự cố.  
@@ -138,6 +137,6 @@ Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.p
 
 **Tích hợp AI thực tế**: Ứng dụng Bedrock trong hệ thống sản phẩm hoàn chỉnh.
 
-**Tạo nền tảng dữ liệu dinh dưỡng**: Có thể mở rộng, phục vụ nghiên cứu AI & y tế
+**Tạo nền tảng dữ liệu dinh dưỡng**: Có thể mở rộng, phục vụ nghiên cứu AI & y tế.
 
 **Khả năng mở rộng**: tích hợp thêm phân tích hình ảnh món ăn, chat AI coach, và ứng dụng di động.

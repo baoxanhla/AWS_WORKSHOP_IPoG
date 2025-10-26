@@ -15,21 +15,21 @@
     <title>Bản đề xuất :: Báo cáo thực tập</title>
 
     
-    <link href="../../css/nucleus.css?1761463653" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1761463653" rel="stylesheet">
-    <link href="../../css/hybrid.css?1761463653" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1761463653" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1761463653" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1761463653" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1761463653" rel="stylesheet">
-    <link href="../../css/theme.css?1761463653" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1761463653" rel="stylesheet">
+    <link href="../../css/nucleus.css?1761464409" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1761464409" rel="stylesheet">
+    <link href="../../css/hybrid.css?1761464409" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1761464409" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1761464409" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1761464409" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1761464409" rel="stylesheet">
+    <link href="../../css/theme.css?1761464409" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1761464409" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1761463653" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1761464409" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1761463653"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1761464409"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1761463653"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1761463653"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1761464409"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1761464409"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/baoxanhla.github.io\/AWS_WORKSHOP_IPoG\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1761463653"></script>
+<script type="text/javascript" src="../../js/search.js?1761464409"></script>
  
   </div>
 
@@ -980,7 +980,7 @@
                     <div class="progress">
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
-    <li><a href="#giải-pháp-aws-serverless-hợp-nhất-cho-việc-theo-dõi-và-gợi-ý-bửa-ăn-cá-nhân-hóa">Giải pháp AWS Serverless hợp nhất cho việc theo dõi và gợi ý bửa ăn cá nhân hóa.</a>
+    <li><a href="#giải-pháp-aws-serverless-hợp-nhất-cho-việc-theo-dõi-và-gợi-ý-bữa-ăn-cá-nhân-hóa">Giải pháp AWS Serverless hợp nhất cho việc theo dõi và gợi ý bữa ăn cá nhân hóa.</a>
       <ul>
         <li><a href="#1-tóm-tắt-điều-hành">1. Tóm tắt điều hành</a></li>
         <li><a href="#2-tuyên-bố-vấn-đề">2. Tuyên bố vấn đề</a></li>
@@ -1017,11 +1017,11 @@
 
 
 	<h1 id="foodmind-recommender-platform-for-prompt-ipog">FoodMind Recommender Platform For Prompt-IPoG</h1>
-<h2 id="giải-pháp-aws-serverless-hợp-nhất-cho-việc-theo-dõi-và-gợi-ý-bửa-ăn-cá-nhân-hóa">Giải pháp AWS Serverless hợp nhất cho việc theo dõi và gợi ý bửa ăn cá nhân hóa.</h2>
+<h2 id="giải-pháp-aws-serverless-hợp-nhất-cho-việc-theo-dõi-và-gợi-ý-bữa-ăn-cá-nhân-hóa">Giải pháp AWS Serverless hợp nhất cho việc theo dõi và gợi ý bữa ăn cá nhân hóa.</h2>
 <h3 id="1-tóm-tắt-điều-hành">1. Tóm tắt điều hành</h3>
 <p><strong>FoodMind Recommender Platform</strong> là nền tảng web thông minh được thiết kế để trở thành một trợ lí ăn uống cá nhân thông minh. Nền tảng tự động tính toán calo mục tiêu (TDEE) dựa trên hồ sơ người dùng, sử dụng <strong>AWS Bedrock (AI Tạo sinh)</strong> để cho phép người dùng ghi log bữa ăn bằng ngôn ngữ tự nhiên (ví dụ: &ldquo;tôi vừa ăn 1 bát phở bò&rdquo;). Hệ thống cung cấp một tính năng gợi ý bữa ăn (Sáng/Trưa/Tối) thông minh, tự động <strong>&ldquo;lọc&rdquo;</strong> các món ăn dựa trên mục tiêu calo và các ràng buộc sức khỏe (ví dụ: &ldquo;dị ứng&rdquo;, &ldquo;bệnh gout&rdquo;) của người dùng.</p>
-<p>Toàn bộ giải pháp được xây dựng trên <strong>kiến trúc serverless</strong> với giao diện sử dụng AWS Amplify (Frontend), API Gateway, AWS Lambda, và Amazon DynamoDB (Backend). Cho phép người dùng có thể  nhận được gợi ý các món ăn trong ngày dựa trên lượng calo được tính toán theo người dùng sử dụng cần tiêu thụ trong ngày. Dữ liệu được lưu trữ và truy vấn qua Amazon DynamoDB, đảm bảo hiệu năng cao và mở rộng linh hoạt</p>
-<p>Giải pháp tập trung vào sự kết hợp giữa AI và dữ liệu thực tế để hỗ trợ ra quyết định tìm món ăn linh hoạt và thiết kế <strong>dashboard</strong> để có thể xem quá trình theo dõi bửa ăn hàng ngày hiệu quả.</p>
+<p>Toàn bộ giải pháp được xây dựng trên <strong>kiến trúc serverless</strong> với giao diện sử dụng AWS Amplify (Frontend), API Gateway, AWS Lambda, và Amazon DynamoDB (Backend). Cho phép người dùng có thể  nhận được gợi ý các món ăn trong ngày dựa trên lượng calo được tính toán theo người dùng sử dụng cần tiêu thụ trong ngày. Dữ liệu được lưu trữ và truy vấn qua Amazon DynamoDB, đảm bảo hiệu năng cao và mở rộng linh hoạt.</p>
+<p>Giải pháp tập trung vào sự kết hợp giữa AI và dữ liệu thực tế để hỗ trợ ra quyết định tìm món ăn linh hoạt và thiết kế <strong>dashboard</strong> để có thể xem quá trình theo dõi bữa ăn hàng ngày hiệu quả.</p>
 <h3 id="2-tuyên-bố-vấn-đề">2. Tuyên bố vấn đề</h3>
 <p><strong>Vấn đề hiện tại</strong></p>
 <p>Nhiều người dùng gặp khó khăn trong việc quản lý chế độ ăn uống hàng ngày — không biết nên ăn bao nhiêu calo, món nào phù hợp với mục tiêu cá nhân cho mỗi ngày. Việc ghi chép thủ công và tra cứu dinh dưỡng gây mất thời gian, thiếu chính xác và không có tính cá nhân hóa.</p>
@@ -1039,7 +1039,7 @@
 <ul>
 <li>Tiết kiệm thời gian theo dõi dinh dưỡng, loại bỏ thao tác thủ công.</li>
 <li>Mang đến trải nghiệm AI thực tế, có tính cá nhân hóa cao.</li>
-<li>Tạo cơ sở dữ liệu chuẩn hóa cho nghiên cứu về AI trong lĩnh vực ẩm thực và cá nhân hóa bửa ăn.</li>
+<li>Tạo cơ sở dữ liệu chuẩn hóa cho nghiên cứu về AI trong lĩnh vực ẩm thực và cá nhân hóa bữa ăn.</li>
 <li>Chi phí thấp nhờ kiến trúc serverless.</li>
 <li>Dễ mở rộng và tái sử dụng mô hình cho các ứng dụng chăm sóc sức khỏe khác.</li>
 <li>ROI ước tính: hoàn vốn trong 6 tháng thông qua tiết kiệm thời gian phát triển và tái sử dụng mô hình AI đã có sẵn.</li>
@@ -1058,7 +1058,7 @@
 <strong>Amazon DynamoDB:</strong> Lưu trữ dữ liệu người dùng, nhật ký ăn uống, mục tiêu calo, và dữ liệu gợi ý – đảm bảo khả năng mở rộng linh hoạt.
 <strong>AWS Secrets Manager:</strong> Bảo mật thông tin xác thực (API Key, Bedrock credentials) cho Lambda và dịch vụ backend.
 <strong>Amazon CloudWatch &amp; AWS CloudTrail:</strong> Theo dõi log, truy cập và hiệu năng toàn hệ thống; hỗ trợ giám sát và khôi phục sự cố.
-<strong>Amazon S3:</strong> Lưu trữ log
+<strong>Amazon S3:</strong> Lưu trữ log.
 <strong>AWS IAM:</strong> Quản lý phân quyền truy cập chi tiết giữa các dịch vụ và người dùng.
 <strong>Amazon VPC:</strong> Cách ly Lambda trong subnet riêng, đảm bảo kết nối an toàn nội bộ giữa Lambda – DynamoDB – Bedrock.</p>
 <p><strong>Thiết kế thành phần</strong></p>
@@ -1067,7 +1067,7 @@
 <li><strong>Phân phối &amp; Bảo vệ truy cập:</strong> Route 53 định tuyến tên miền, AWS WAF bảo vệ khỏi tấn công web (SQL Injection, DDoS) và CloudFront tăng tốc độ tải nội dung và phân phối toàn cầu.</li>
 <li><strong>Giao diện web</strong>: Amplify lưu trữ ứng dụng Next.js.</li>
 <li><strong>Ghi nhật ký &amp; gợi ý bữa ăn:</strong> Người dùng nhập dữ liệu (text) lưu vào DynamoDB, Lambda gợi ý món ăn theo số tính toán Calo.</li>
-<li><strong>Phân tích bữa ăn:</strong> Lambda gọi Bedrock xử lý thông tin bửa ăn bằng ngôn ngữ tự nhiên của user nhập vào, bóc tách và tìm nhật ký Calo của món và lưu lại DynamoDB nếu món mới</li>
+<li><strong>Phân tích bữa ăn:</strong> Lambda gọi Bedrock xử lý thông tin bữa ăn bằng ngôn ngữ tự nhiên của user nhập vào, bóc tách và tìm nhật ký Calo của món và lưu lại DynamoDB nếu món mới.</li>
 <li><strong>Hiển thị dashboard:</strong> Amplify hiển thị biểu đồ calo theo ngày/tuần/tháng sau khi user cập nhật bữa ăn.</li>
 <li><strong>Xác thực &amp; bảo mật:</strong> Cognito đảm bảo đăng nhập an toàn và quản lý user.</li>
 <li><strong>Giám sát &amp; theo dõi:</strong> Amazon CloudWatch theo dõi log, hiệu năng Lambda, AWS CloudTrail lưu lại lịch sử thao tác và truy cập dịch vụ.</li>
@@ -1076,7 +1076,7 @@
 <p><strong>Các giai đoạn triển khai</strong></p>
 <ul>
 <li>Nghiên cứu và Thiết kế: Thiết kế pipeline AI + Cloud, kiểm tra tính khả thi và vẽ sơ đồ hệ thống AWS (5 Tuần đầu tiên).</li>
-<li>Tính toán chi phí và tối ưu giải pháp: Kiểm tra lại chi phí các dịch vụ trong kiến trúc để tối ưu chi phí (Tuần 6)</li>
+<li>Tính toán chi phí và tối ưu giải pháp: Kiểm tra lại chi phí các dịch vụ trong kiến trúc để tối ưu chi phí (Tuần 6).</li>
 <li>Phát triển, Kiểm thử và triển khai: Lưu dữ liệu ban đầu, sau đó tạo giao diện wed với Next.js, kiểm thử các luồng tính năng API, tốc độ và vận hành sản phẩm (Tuần 7 - tuần 11).</li>
 </ul>
 <p><strong>Yêu cầu kỹ thuật</strong></p>
@@ -1096,7 +1096,7 @@
 <li><em>Sau triển khai</em>: Theo dõi, cải tiến hệ thống gợi ý và mở rộng dữ liệu trong vòng 1 năm.</li>
 </ul>
 <h3 id="6-ước-tính-ngân-sách">6. Ước tính ngân sách</h3>
-<p>Có thể xem chi phí trên <a href="https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01">AWS Pricing Calculator</a><br>
+<p>Có thể xem chi phí trên <a href="https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01">AWS Pricing Calculator</a>.
 Hoặc tải <a href="../attachments/budget_estimation.pdf">tệp ước tính ngân sách</a>.</p>
 <p><strong>Chi phí hạ tầng</strong></p>
 <ul>
@@ -1119,13 +1119,13 @@ Hoặc tải <a href="../attachments/budget_estimation.pdf">tệp ước tính n
 <p>AWS Bedrock: 3,00-500 USD/tháng  ( vài nghìn token/tháng).</p>
 </li>
 <li>
-<p>CloudWatch + CloudTrail + IAM etc: ~ 0.10-USD</p>
+<p>CloudWatch + CloudTrail + IAM etc: ~ 0.10-USD.</p>
 </li>
 <li>
 <p>Amazon Cognito: 0.00 USD/tháng ( &lt;50 người dùng hoạt động (Free Tier)).</p>
 </li>
 </ul>
-<p><strong>Tổng</strong>:  ~4-6 USD/tháng, ~50-75 USD/12 tháng</p>
+<p><strong>Tổng</strong>:  ~4-6 USD/tháng, ~50-75 USD/12 tháng.</p>
 <h3 id="7-đánh-giá-rủi-ro">7. Đánh giá rủi ro</h3>
 <p><em>Ma trận rủi ro</em></p>
 <ul>
@@ -1139,7 +1139,7 @@ Hoặc tải <a href="../attachments/budget_estimation.pdf">tệp ước tính n
 <li>Sai lệch AI: Dùng &ldquo;prompt engineering&rdquo; kỹ lưỡng.</li>
 <li>Quá tải request API: Giới hạn truy cập qua API Gateway.</li>
 <li>Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.</li>
-<li>Logic: Điều chình code kĩ lưỡng với các hàm labda.</li>
+<li>Logic: Điều chình code kĩ lưỡng với các hàm lambda.</li>
 </ul>
 <p><em>Kế hoạch dự phòng</em></p>
 <ul>
@@ -1149,7 +1149,7 @@ Hoặc tải <a href="../attachments/budget_estimation.pdf">tệp ước tính n
 <h3 id="8-kết-quả-kỳ-vọng">8. Kết quả kỳ vọng</h3>
 <p><strong>Trải nghiệm người dùng nâng cao</strong>: Cung cấp một trợ lý bữa ăn &ldquo;thông minh&rdquo;, xóa bỏ mọi rào cản thủ công trong việc ghi log và chọn món.</p>
 <p><strong>Tích hợp AI thực tế</strong>: Ứng dụng Bedrock trong hệ thống sản phẩm hoàn chỉnh.</p>
-<p><strong>Tạo nền tảng dữ liệu dinh dưỡng</strong>: Có thể mở rộng, phục vụ nghiên cứu AI &amp; y tế</p>
+<p><strong>Tạo nền tảng dữ liệu dinh dưỡng</strong>: Có thể mở rộng, phục vụ nghiên cứu AI &amp; y tế.</p>
 <p><strong>Khả năng mở rộng</strong>: tích hợp thêm phân tích hình ảnh món ăn, chat AI coach, và ứng dụng di động.</p>
 
 
@@ -1851,19 +1851,19 @@ Hoặc tải <a href="../attachments/budget_estimation.pdf">tệp ước tính n
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1761463653"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1761463653"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1761463653"></script>
-    <script src="../../js/jquery.sticky.js?1761463653"></script>
-    <script src="../../js/featherlight.min.js?1761463653"></script>
-    <script src="../../js/highlight.pack.js?1761463653"></script>
+    <script src="../../js/clipboard.min.js?1761464409"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1761464409"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1761464409"></script>
+    <script src="../../js/jquery.sticky.js?1761464409"></script>
+    <script src="../../js/featherlight.min.js?1761464409"></script>
+    <script src="../../js/highlight.pack.js?1761464409"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1761463653"></script>
-    <script src="../../js/learn.js?1761463653"></script>
-    <script src="../../js/hugo-learn.js?1761463653"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1761464409"></script>
+    <script src="../../js/learn.js?1761464409"></script>
+    <script src="../../js/hugo-learn.js?1761464409"></script>
 
-    <link href="../../mermaid/mermaid.css?1761463653" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1761463653"></script>
+    <link href="../../mermaid/mermaid.css?1761464409" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1761464409"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
