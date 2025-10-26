@@ -45,10 +45,7 @@ Users simply input data — the system understands, analyzes, and recommends sui
 - Estimated cost: around **10–15 USD/month**.  
 
 ### 3. Solution Architecture  
-The platform is fully built on **AI-as-a-Service** combined with **AWS Serverless**, ensuring high performance, security, and scalability.  
-Nutritional data on dishes is stored in **Amazon DynamoDB**, which supports generating meal recommendations based on calculated calorie targets.  
-**Amazon Bedrock** processes user natural language to extract calorie information and log meals in DynamoDB.  
-**AWS Amplify** hosts the Next.js web interface, and **Amazon Cognito** ensures secure user authentication.  
+The platform is fully built on **AI-as-a-Service** combined with **AWS Serverless**, ensuring high performance, security, and scalability. Nutritional data on dishes is stored in **Amazon DynamoDB**, which supports generating meal recommendations based on calculated calorie targets. **Amazon Bedrock** processes user natural language to extract calorie information and log meals in DynamoDB. **AWS Amplify** hosts the Next.js web interface, and **Amazon Cognito** ensures secure user authentication. The architecture is detailed below:
 
 ![FoodMind Recommender Platform Architecture](/images/2-Proposal/ArchitectureFoodMind.png)
 
