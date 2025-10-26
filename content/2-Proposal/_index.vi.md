@@ -10,9 +10,10 @@ pre: " <b> 2. </b> "
 ## Giải pháp AWS Serverless hợp nhất cho việc theo dõi và gợi ý bửa ăn cá nhân hóa. 
 
 ### 1. Tóm tắt điều hành  
-**FoodMine Recommender Platform** là nền tảng web thông minh được thiết kế để trở thành một trợ lí ăn uống cá nhân thông minh. Nền tảng tự động tính toán calo mục tiêu (TDEE) dựa trên hồ sơ người dùng, sử dụng **AWS Bedrock (AI Tạo sinh)** để cho phép người dùng ghi log bữa ăn bằng ngôn ngữ tự nhiên (ví dụ: "tôi vừa ăn 1 bát phở bò"). Hệ thống cung cấp một tính năng gợi ý bữa ăn (Sáng/Trưa/Tối) thông minh, tự động **"lọc"** các món ăn dựa trên mục tiêu calo và các ràng buộc sức khỏe (ví dụ: "dị ứng", "bệnh gout") của người dùng.
+**FoodMind Recommender Platform** là nền tảng web thông minh được thiết kế để trở thành một trợ lí ăn uống cá nhân thông minh. Nền tảng tự động tính toán calo mục tiêu (TDEE) dựa trên hồ sơ người dùng, sử dụng **AWS Bedrock (AI Tạo sinh)** để cho phép người dùng ghi log bữa ăn bằng ngôn ngữ tự nhiên (ví dụ: "tôi vừa ăn 1 bát phở bò"). Hệ thống cung cấp một tính năng gợi ý bữa ăn (Sáng/Trưa/Tối) thông minh, tự động **"lọc"** các món ăn dựa trên mục tiêu calo và các ràng buộc sức khỏe (ví dụ: "dị ứng", "bệnh gout") của người dùng.
 
 Toàn bộ giải pháp được xây dựng trên **kiến trúc serverless** với giao diện sử dụng AWS Amplify (Frontend), API Gateway, AWS Lambda, và Amazon DynamoDB (Backend). Cho phép người dùng có thể  nhận được gợi ý các món ăn trong ngày dựa trên lượng calo được tính toán theo người dùng sử dụng cần tiêu thụ trong ngày. Dữ liệu được lưu trữ và truy vấn qua Amazon DynamoDB, đảm bảo hiệu năng cao và mở rộng linh hoạt
+
 Giải pháp tập trung vào sự kết hợp giữa AI và dữ liệu thực tế để hỗ trợ ra quyết định tìm món ăn linh hoạt và thiết kế **dashboard** để có thể xem quá trình theo dõi bửa ăn hàng ngày hiệu quả. 
 
 ### 2. Tuyên bố vấn đề  

@@ -12,8 +12,8 @@ pre: " <b> 2. </b> "
 **FoodMind Recommender Platform** is an intelligent web platform designed to serve as a personalized eating assistant. It automatically calculates the user's Total Daily Energy Expenditure (TDEE) based on their profile and leverages **AWS Bedrock (Generative AI)** to allow users to log meals in natural language (e.g., “I just ate a bowl of beef pho”).  
 The system also provides intelligent meal recommendations (Breakfast/Lunch/Dinner) by automatically **filtering** dishes according to calorie goals and health constraints (e.g., “allergies”, “gout”).  
 
-The entire solution is built on a **serverless architecture** with AWS Amplify (Frontend), API Gateway, AWS Lambda, and Amazon DynamoDB (Backend). It enables users to receive meal recommendations based on their calculated calorie intake for the day.  
-Data is stored and queried through Amazon DynamoDB, ensuring high performance and flexible scalability.  
+The entire solution is built on a **serverless architecture** with AWS Amplify (Frontend), API Gateway, AWS Lambda, and Amazon DynamoDB (Backend). It enables users to receive meal recommendations based on their calculated calorie intake for the day. Data is stored and queried through Amazon DynamoDB, ensuring high performance and flexible scalability.  
+
 The solution emphasizes the combination of AI and real-world data to support smart meal decision-making and offers a **dashboard** for users to track their eating habits effectively.  
 
 ### 2. Problem Statement  

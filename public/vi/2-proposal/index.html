@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head><script src="/AWS_WORKSHOP_IPoG/livereload.js?mindelay=10&amp;v=2&amp;port=35579&amp;path=AWS_WORKSHOP_IPoG/livereload" data-no-instant defer></script>
+  <head><script src="/AWS_WORKSHOP_IPoG/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS_WORKSHOP_IPoG/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.152.2">
+    <meta name="generator" content="Hugo 0.150.0">
     <meta
   name="description"
   content=""
@@ -15,21 +15,21 @@
     <title>Bản đề xuất :: Báo cáo thực tập</title>
 
     
-    <link href="../../css/nucleus.css?1761481888" rel="stylesheet">
-    <link href="../../css/fontawesome-all.min.css?1761481888" rel="stylesheet">
-    <link href="../../css/hybrid.css?1761481888" rel="stylesheet">
-    <link href="../../css/featherlight.min.css?1761481888" rel="stylesheet">
-    <link href="../../css/perfect-scrollbar.min.css?1761481888" rel="stylesheet">
-    <link href="../../css/auto-complete.css?1761481888" rel="stylesheet">
-    <link href="../../css/atom-one-dark-reasonable.css?1761481888" rel="stylesheet">
-    <link href="../../css/theme.css?1761481888" rel="stylesheet">
-    <link href="../../css/hugo-theme.css?1761481888" rel="stylesheet">
+    <link href="../../css/nucleus.css?1761461744" rel="stylesheet">
+    <link href="../../css/fontawesome-all.min.css?1761461744" rel="stylesheet">
+    <link href="../../css/hybrid.css?1761461744" rel="stylesheet">
+    <link href="../../css/featherlight.min.css?1761461744" rel="stylesheet">
+    <link href="../../css/perfect-scrollbar.min.css?1761461744" rel="stylesheet">
+    <link href="../../css/auto-complete.css?1761461744" rel="stylesheet">
+    <link href="../../css/atom-one-dark-reasonable.css?1761461744" rel="stylesheet">
+    <link href="../../css/theme.css?1761461744" rel="stylesheet">
+    <link href="../../css/hugo-theme.css?1761461744" rel="stylesheet">
     
-    <link href="../../css/theme-workshop.css?1761481888" rel="stylesheet">
+    <link href="../../css/theme-workshop.css?1761461744" rel="stylesheet">
     
     
 
-    <script src="../../js/jquery-3.3.1.min.js?1761481888"></script>
+    <script src="../../js/jquery-3.3.1.min.js?1761461744"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../js/lunr.min.js?1761481888"></script>
-<script type="text/javascript" src="../../js/auto-complete.js?1761481888"></script>
+<script type="text/javascript" src="../../js/lunr.min.js?1761461744"></script>
+<script type="text/javascript" src="../../js/auto-complete.js?1761461744"></script>
 <script type="text/javascript">
     
-        var baseurl = "http:\/\/localhost:35579\/AWS_WORKSHOP_IPoG\/\/vi";
+        var baseurl = "http:\/\/localhost:1313\/AWS_WORKSHOP_IPoG\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../js/search.js?1761481888"></script>
+<script type="text/javascript" src="../../js/search.js?1761461744"></script>
  
   </div>
 
@@ -851,14 +851,14 @@
                        
                 <option
                   id="en"
-                  value="http://localhost:35579/AWS_WORKSHOP_IPoG/2-proposal/"
+                  value="http://localhost:1313/AWS_WORKSHOP_IPoG/2-proposal/"
                 >
                   English
                 </option>
                             
                 <option
                   id="vi"
-                  value="http://localhost:35579/AWS_WORKSHOP_IPoG/vi/2-proposal/"
+                  value="http://localhost:1313/AWS_WORKSHOP_IPoG/vi/2-proposal/"
                   selected
                 >
                   Tiếng Việt
@@ -1019,9 +1019,9 @@
 	<h1 id="foodmind-recommender-platform-for-prompt-ipog">FoodMind Recommender Platform For Prompt-IPoG</h1>
 <h2 id="giải-pháp-aws-serverless-hợp-nhất-cho-việc-theo-dõi-và-gợi-ý-bửa-ăn-cá-nhân-hóa">Giải pháp AWS Serverless hợp nhất cho việc theo dõi và gợi ý bửa ăn cá nhân hóa.</h2>
 <h3 id="1-tóm-tắt-điều-hành">1. Tóm tắt điều hành</h3>
-<p><strong>FoodMine Recommender Platform</strong> là nền tảng web thông minh được thiết kế để trở thành một trợ lí ăn uống cá nhân thông minh. Nền tảng tự động tính toán calo mục tiêu (TDEE) dựa trên hồ sơ người dùng, sử dụng <strong>AWS Bedrock (AI Tạo sinh)</strong> để cho phép người dùng ghi log bữa ăn bằng ngôn ngữ tự nhiên (ví dụ: &ldquo;tôi vừa ăn 1 bát phở bò&rdquo;). Hệ thống cung cấp một tính năng gợi ý bữa ăn (Sáng/Trưa/Tối) thông minh, tự động <strong>&ldquo;lọc&rdquo;</strong> các món ăn dựa trên mục tiêu calo và các ràng buộc sức khỏe (ví dụ: &ldquo;dị ứng&rdquo;, &ldquo;bệnh gout&rdquo;) của người dùng.</p>
-<p>Toàn bộ giải pháp được xây dựng trên <strong>kiến trúc serverless</strong> với giao diện sử dụng AWS Amplify (Frontend), API Gateway, AWS Lambda, và Amazon DynamoDB (Backend). Cho phép người dùng có thể  nhận được gợi ý các món ăn trong ngày dựa trên lượng calo được tính toán theo người dùng sử dụng cần tiêu thụ trong ngày. Dữ liệu được lưu trữ và truy vấn qua Amazon DynamoDB, đảm bảo hiệu năng cao và mở rộng linh hoạt
-Giải pháp tập trung vào sự kết hợp giữa AI và dữ liệu thực tế để hỗ trợ ra quyết định tìm món ăn linh hoạt và thiết kế <strong>dashboard</strong> để có thể xem quá trình theo dõi bửa ăn hàng ngày hiệu quả.</p>
+<p><strong>FoodMind Recommender Platform</strong> là nền tảng web thông minh được thiết kế để trở thành một trợ lí ăn uống cá nhân thông minh. Nền tảng tự động tính toán calo mục tiêu (TDEE) dựa trên hồ sơ người dùng, sử dụng <strong>AWS Bedrock (AI Tạo sinh)</strong> để cho phép người dùng ghi log bữa ăn bằng ngôn ngữ tự nhiên (ví dụ: &ldquo;tôi vừa ăn 1 bát phở bò&rdquo;). Hệ thống cung cấp một tính năng gợi ý bữa ăn (Sáng/Trưa/Tối) thông minh, tự động <strong>&ldquo;lọc&rdquo;</strong> các món ăn dựa trên mục tiêu calo và các ràng buộc sức khỏe (ví dụ: &ldquo;dị ứng&rdquo;, &ldquo;bệnh gout&rdquo;) của người dùng.</p>
+<p>Toàn bộ giải pháp được xây dựng trên <strong>kiến trúc serverless</strong> với giao diện sử dụng AWS Amplify (Frontend), API Gateway, AWS Lambda, và Amazon DynamoDB (Backend). Cho phép người dùng có thể  nhận được gợi ý các món ăn trong ngày dựa trên lượng calo được tính toán theo người dùng sử dụng cần tiêu thụ trong ngày. Dữ liệu được lưu trữ và truy vấn qua Amazon DynamoDB, đảm bảo hiệu năng cao và mở rộng linh hoạt</p>
+<p>Giải pháp tập trung vào sự kết hợp giữa AI và dữ liệu thực tế để hỗ trợ ra quyết định tìm món ăn linh hoạt và thiết kế <strong>dashboard</strong> để có thể xem quá trình theo dõi bửa ăn hàng ngày hiệu quả.</p>
 <h3 id="2-tuyên-bố-vấn-đề">2. Tuyên bố vấn đề</h3>
 <p><strong>Vấn đề hiện tại</strong></p>
 <p>Nhiều người dùng gặp khó khăn trong việc quản lý chế độ ăn uống hàng ngày — không biết nên ăn bao nhiêu calo, món nào phù hợp với mục tiêu cá nhân cho mỗi ngày. Việc ghi chép thủ công và tra cứu dinh dưỡng gây mất thời gian, thiếu chính xác và không có tính cá nhân hóa.</p>
@@ -1851,19 +1851,19 @@ Hoặc tải <a href="../attachments/budget_estimation.pdf">tệp ước tính n
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../js/clipboard.min.js?1761481888"></script>
-    <script src="../../js/perfect-scrollbar.min.js?1761481888"></script>
-    <script src="../../js/perfect-scrollbar.jquery.min.js?1761481888"></script>
-    <script src="../../js/jquery.sticky.js?1761481888"></script>
-    <script src="../../js/featherlight.min.js?1761481888"></script>
-    <script src="../../js/highlight.pack.js?1761481888"></script>
+    <script src="../../js/clipboard.min.js?1761461744"></script>
+    <script src="../../js/perfect-scrollbar.min.js?1761461744"></script>
+    <script src="../../js/perfect-scrollbar.jquery.min.js?1761461744"></script>
+    <script src="../../js/jquery.sticky.js?1761461744"></script>
+    <script src="../../js/featherlight.min.js?1761461744"></script>
+    <script src="../../js/highlight.pack.js?1761461744"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../js/modernizr.custom-3.6.0.js?1761481888"></script>
-    <script src="../../js/learn.js?1761481888"></script>
-    <script src="../../js/hugo-learn.js?1761481888"></script>
+    <script src="../../js/modernizr.custom-3.6.0.js?1761461744"></script>
+    <script src="../../js/learn.js?1761461744"></script>
+    <script src="../../js/hugo-learn.js?1761461744"></script>
 
-    <link href="../../mermaid/mermaid.css?1761481888" rel="stylesheet" />
-    <script src="../../mermaid/mermaid.js?1761481888"></script>
+    <link href="../../mermaid/mermaid.css?1761461744" rel="stylesheet" />
+    <script src="../../mermaid/mermaid.js?1761461744"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
