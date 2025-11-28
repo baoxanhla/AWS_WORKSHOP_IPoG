@@ -7,17 +7,17 @@ pre: " <b> 1.9. </b> "
 
 ### Mục tiêu tuần 9:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Làm quen với hệ sinh thái dữ liệu và Machine Learning trên AWS.
+* Nắm được các tính năng chính trong hệ sinh AI của AWS hỗ trợ.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Tìm hiểu AWS Glue <br>&emsp; + Crawler <br> - Tìm hiểu Amazon Athena <br> - Tìm hiểu Amazon QuickSight <br> - Tìm hiểu Amazon SageMaker | 11/08/2025   | 11/08/2025      |
+| 3   | - **Thực hành**: Phân tích dữ liệu: <br>&emsp; + Tạo IAM Role và IAM policy + Tạo S3 Bucket <br>&emsp; + Tạo Glue Crawler và kiểm tra dữ liệu <br>&emsp; + Tạo notebook với AWS Glue Studio <br>&emsp; + Phân tích với Athena và trực quan với QuickSight <br>&emsp; Dọn dẹp tài nguyên | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - **Thực hành**: Phân tích dữ liệu với Amazon SageMaker: <br>&emsp; + Tạo SageMaker Studio <br>&emsp; + Chuẩn bị dataset, phân tích dữ liệu và export dữ liệu tới S3 <br>&emsp; + Train và tinh chỉnh mô hình Machine learning <br>&emsp; +  Triển khai và đánh giá hiệu suất mô hình <br>&emsp; + tinh chỉnh mô hình tự động <br>&emsp; + Dọn dẹp tài nguyên | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Tìm hiểu các Amazon Bedrock  <br>&emsp; + Các Foundation model <br>&emsp; + Bedrock Agents <br>&emsp; + Knowledge Bases <br>&emsp; + Bedrock Inference Features| 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Tìm hiểu các tính năng trong Pre-trained AI Services <br>&emsp; + Amazon Rekognition <br>&emsp; + Amazon translate <br>&emsp; + Amazon Textract <br>&emsp; + Amazon Transcribe <br>&emsp; + Amazon Polly <br>&emsp; + Amazon Comprehend <br>&emsp; + Amazon Kendra <br>&emsp; + Amazon Lookout <br>&emsp; + Amazon Personalize | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 9:

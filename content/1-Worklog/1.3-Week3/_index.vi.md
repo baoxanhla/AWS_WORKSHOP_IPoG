@@ -7,7 +7,7 @@ pre: " <b> 1.3. </b> "
 
 ### Mục tiêu tuần 3:
 
-* Tìm hiểu dịch vụ máy chủ ảo cốt lõi (Amazon EC2) và các thành phần quan trọng trong AWS.
+* Hiểu dịch vụ máy chủ ảo cốt lõi (Amazon EC2) và các thành phần quan trọng trong AWS.
 * Hiểu rõ kiến trúc, cơ chế hoạt động và cách quản lý các dịch vụ máy chủ ảo trong AWS.
 
 ### Các công việc cần triển khai trong tuần này:

@@ -113,6 +113,9 @@ Tham gia sự kiện **Cloud Day** là một trải nghiệm rất bổ ích, gi
 
 #### Một Số Hình Ảnh Khi Tham Gia Sự Kiện
 
-![Anh](/images/2-Proposal/Architecture.png)
+![Image](/images/2-Proposal/clouday.png)
+![Image](/images/2-Proposal/cloudday1.png)
+![Image](/images/2-Proposal/cloudday2.png)
+![Image](/images/2-Proposal/cloudday3.png)
 
 > Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.

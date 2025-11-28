@@ -60,5 +60,3 @@ pre: " <b> 1.1. </b> "
   * Enterprise: 15.000 USD/tháng, cho doanh nghiệp quy mô lớn được đảm bảo các tiêu chí bảo mẩ tiêu chuẩn và nghiêm ngặt nhất với các dịch vụ bảo mật như: về kiến trúc phần mềm, hạ tầng, hỗ trợ toàn diện về chiến lược và tối ưu chi phí, được ưu tiên chăm sóc đặc biệt các yêu cấu hỗ trợ,...
   
 * Làm quen với giao diện AWS Console và sử dụng tốt các thao tác cơ bản qua cả Console và CLI.
-
-

@@ -7,17 +7,17 @@ pre: " <b> 1.11. </b> "
 
 ### Mục tiêu tuần 11:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu quy trình CI/CD và bộ công cụ AWS Code Series.
+* Trải nghiệm được các dịch vụ Amazon AI
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Tham gia Event: Generative AI with Amazon Bedrock <br>&emsp; + Cập nhật lại được các kiến thức về các Amazon Bedrock <br>&emsp; + Hiểu rõ hơn về các dịch vụ pre-train AI service| 11/08/2025   | 11/08/2025      |
+| 3   | - Tìm hiểu các dịch vụ orchestrator CI/CD trên AWS <br>&emsp; + AWS CodeCommit <br>&emsp; + AWS CodeBuild <br>&emsp; + AWS CodeDeploy <br>&emsp; + AWS CodePipeline | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Tìm hiểu về AWS Elastic Beanstalk <br>&emsp; + Application <br>&emsp; + Enviroment <br> - **Thực hành:** Triển khai ứng dụng wed chạy trên AWS với Elastic Beanstalk  <br>&emsp; + Tạo CloudFormation stack <br>&emsp; + Kết nối EC2 linux instance và cài đặt database <br>&emsp; + Kiểm tra máy chủ local để tải project <br>&emsp; + Triển khai trên ElasticBeanstalk <br>&emsp; + Cập nhật ứng dụng <br>&emsp; + Kiểm tra môi trường và truy vấn thông tin máy chủ EC2 <br>&emsp; + Dọn dẹp tài nguyên.| 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - **Thực hành**: Sử dụng Amazon Polly <br>&emsp; + Cài đặt DynamoDB  <br>&emsp; + Khám phá Amazon Polly <br>&emsp; + Tạo Speech và speech marks bằng AWS CLI <br>&emsp; + Tạo speech marks bằng AWS polly SDK dành cho java  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - **Thực hành:** Sử dụng Amazon Rekognition <br>&emsp; + Tạo Cognito Identity Pool <br>&emsp; + Phát hiện đối tượng bằng Amazon Rekonition <br>&emsp; + Nhận diện khuôn mặt <br>&emsp; + Thử nghiệm ứng dụng tìm người <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 11:

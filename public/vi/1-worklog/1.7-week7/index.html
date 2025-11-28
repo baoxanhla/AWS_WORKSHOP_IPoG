@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head><script src="/AWS_WORKSHOP_IPoG/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS_WORKSHOP_IPoG/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.152.2">
@@ -15,21 +15,21 @@
     <title>Worklog Tuần 7 :: Báo cáo thực tập</title>
 
     
-    <link href="../../../css/nucleus.css?1762760910" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1762760910" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1762760910" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1762760910" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1762760910" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1762760910" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1762760910" rel="stylesheet">
-    <link href="../../../css/theme.css?1762760910" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1762760910" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1764299382" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1764299382" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1764299382" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1764299382" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1764299382" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1764299382" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1764299382" rel="stylesheet">
+    <link href="../../../css/theme.css?1764299382" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1764299382" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1762760910" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1764299382" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1762760910"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1764299382"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1762760910"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1762760910"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1764299382"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1764299382"></script>
 <script type="text/javascript">
     
-        var baseurl = "http:\/\/localhost:1313\/AWS_WORKSHOP_IPoG\/\/vi";
+        var baseurl = "https:\/\/baoxanhla.github.io\/AWS_WORKSHOP_IPoG\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1762760910"></script>
+<script type="text/javascript" src="../../../js/search.js?1764299382"></script>
  
   </div>
 
@@ -531,7 +531,7 @@
         "
 >
   <a href="../../../vi/4-eventparticipated/4.2-event2/">
-     <b> 4.2. </b> Event 2 
+     <b> 4.1. </b> Event 2 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -851,14 +851,14 @@
                        
                 <option
                   id="en"
-                  value="http://localhost:1313/AWS_WORKSHOP_IPoG/1-worklog/1.7-week7/"
+                  value="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/1-worklog/1.7-week7/"
                 >
                   English
                 </option>
                             
                 <option
                   id="vi"
-                  value="http://localhost:1313/AWS_WORKSHOP_IPoG/vi/1-worklog/1.7-week7/"
+                  value="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/1-worklog/1.7-week7/"
                   selected
                 >
                   Tiếng Việt
@@ -1019,9 +1019,14 @@
 
 	<h3 id="mục-tiêu-tuần-7">Mục tiêu tuần 7:</h3>
 <ul>
-<li>Kết nối, làm quen với các thành viên trong First Cloud Journey.</li>
-<li>Hiểu dịch vụ AWS cơ bản, cách dùng console &amp; CLI.</li>
+<li>Nắm được kiến trúc và cách hoạt động của mô hình Serverless với Lambda và API Gateway.</li>
+<li>Hiểu được cơ chế vận hành của AWS Lambda và hiểu cơ bản về kiến trúc Event-Driven</li>
+<li>Biết cách sử dụng sử dụng SQS và SNS với kiến trúc hợp lí</li>
 </ul>
+<ul>
+<li>Cấu hình API Gateway trigger Lambda</li>
+</ul>
+<p>  + Lưu dữ liệu từ Lambda xuống DynamoDB</p>
 <h3 id="các-công-việc-cần-triển-khai-trong-tuần-này">Các công việc cần triển khai trong tuần này:</h3>
 <table>
   <thead>
@@ -1036,35 +1041,35 @@
   <tbody>
       <tr>
           <td>2</td>
-          <td>- Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập</td>
+          <td>- Tìm hiểu về AWS Lambda <br>  + IAM Role cho Lambda <br>  + Lambda function <br> - Tìm hiểu về Amazon API Gateway <br>  + Các method <br>  + CORS <br> - <strong>Thực hành</strong>: <br>  + Tạo role cấp quyền tối thiểu cho Lambda để truy cập S3 và  DynamoDB <br>  + Tạo Lambda function để xử lí file upload <br>  + Cấu hình API Gateway trigger Lambda <br>  + Lưu dữ liệu từ Lambda xuống DynamoDB</td>
           <td>11/08/2025</td>
           <td>11/08/2025</td>
           <td></td>
       </tr>
       <tr>
           <td>3</td>
-          <td>- Tìm hiểu AWS và các loại dịch vụ <br>  + Compute <br>  + Storage <br>  + Networking <br>  + Database <br>  + &hellip; <br></td>
+          <td>- <strong>Thực hành</strong>: Tương tác giữa Lambda với S3 và DynamoDB <br>  + Tạo lambda function xử lý ảnh <br>  + Tạo S3 Bucket <br>  + Tạo IAM Policy cho lambda fuction và kiểm tra hoạt động <br>  + Tạo và quản lý bảng trong AWS DynamoDB + Tạo lambda fuction để gi dữ liệu vào <br>  + Dọn dẹp tài nguyên</td>
           <td>12/08/2025</td>
           <td>12/08/2025</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
           <td>4</td>
-          <td>- Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console &amp; AWS CLI <br> - <strong>Thực hành:</strong> <br>  + Tạo AWS account <br>  + Cài AWS CLI &amp; cấu hình <br>   + Cách sử dụng AWS CLI</td>
-          <td>13/08/2025</td>
-          <td>13/08/2025</td>
-          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td>- Tìm hiểu EC2 cơ bản: <br>  + Instance types <br>  + AMI <br>  + EBS <br>  + &hellip; <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br></td>
+          <td>- <strong>Thực hành</strong>: Host wed tỉnh với S3 <br>  + Tạo Bucket, bật enable, gán policy và tải thư mục frontend lên S3 <br>  + Tạo bảng DynamoDB, triển khai lambda function để ghi, đọc và xóa dữ liệu <br>  + Thiết lập API Geteway <br>  + Kiểm trai API với Postman <br>  + Kiểm tra API với front-end <br>  + Dọn dẹp tài nguyên</td>
           <td>14/08/2025</td>
           <td>15/08/2025</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
       </tr>
       <tr>
+          <td>5</td>
+          <td>- Tìm hiểu kiến trúc Event-driven với Amazon SQS và SNS <br>  + SQS: Pub và Sub <br>  + SNS: Queue <br> - <strong>Thực hành</strong>: <br>  + Tạo Queue và chủ đề SNS <br>  + Tạo API và Lambda function để tương tác với Queue và chủ đề SNS <br>  + Kiểm tra hoạt động với APIs <br>  + Dọn dẹp tài nguyên</td>
+          <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
           <td>6</td>
-          <td>- <strong>Thực hành:</strong> <br>  + Tạo EC2 instance <br>  + Kết nối SSH <br>  + Gắn EBS volume</td>
+          <td>- Tìm hiểu AWS Step Functions <br>  + Orchestrate microservices</td>
           <td>15/08/2025</td>
           <td>15/08/2025</td>
           <td><a href="https://cloudjourney.awsstudygroup.com/">https://cloudjourney.awsstudygroup.com/</a></td>
@@ -1817,19 +1822,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1762760910"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1762760910"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762760910"></script>
-    <script src="../../../js/jquery.sticky.js?1762760910"></script>
-    <script src="../../../js/featherlight.min.js?1762760910"></script>
-    <script src="../../../js/highlight.pack.js?1762760910"></script>
+    <script src="../../../js/clipboard.min.js?1764299382"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1764299382"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1764299382"></script>
+    <script src="../../../js/jquery.sticky.js?1764299382"></script>
+    <script src="../../../js/featherlight.min.js?1764299382"></script>
+    <script src="../../../js/highlight.pack.js?1764299382"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1762760910"></script>
-    <script src="../../../js/learn.js?1762760910"></script>
-    <script src="../../../js/hugo-learn.js?1762760910"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1764299382"></script>
+    <script src="../../../js/learn.js?1764299382"></script>
+    <script src="../../../js/hugo-learn.js?1764299382"></script>
 
-    <link href="../../../mermaid/mermaid.css?1762760910" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1762760910"></script>
+    <link href="../../../mermaid/mermaid.css?1764299382" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1764299382"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -121,6 +121,9 @@ Attending **Cloud Day** was an incredibly insightful experience that gave me a c
 
 #### Some event photos
 
-![Image](/images/2-Proposal/Architecture.png)
+![Image](/images/2-Proposal/clouday.png)
+![Image](/images/2-Proposal/cloudday1.png)
+![Image](/images/2-Proposal/cloudday2.png)
+![Image](/images/2-Proposal/cloudday3.png)
 
 > Overall, the event not only provided valuable technical knowledge but also reshaped my mindset on system modernization, design thinking, and effective collaboration between teams.

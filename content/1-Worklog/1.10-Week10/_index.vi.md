@@ -7,17 +7,17 @@ pre: " <b> 1.10. </b> "
 
 ### Mục tiêu tuần 10:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Biết triển khai Amazon CloudWatch giám sát hệ thống 
+* Hiểu được quy trình AWS CloudTrail ghi lại toàn bộ theo dõi hoạt động chi tiết của API
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Tìm hiểu về Amazon CloudWatch <br>&emsp; + Metrics <br>&emsp; + Logs <br>&emsp; + Alarms <br>&emsp; + Events <br>&emsp; + Dashboards  <br>&emsp; + AWS X-Ray | 11/08/2025   | 11/08/2025      |
+| 3   | - **Thực hành**: <br>&emsp; + Tạo IAM Role, IAM policy và cấu hình EC2 Instance  <br>&emsp; + Cấu hình CloudWatch metric , logs <br>&emsp; + Kích hoạt CloudWatch Alams <br>&emsp; + Cấu hình Dashboards <br>&emsp; + Dọn dẹp tài nguyên   | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Tìm hiểu AWS CloudTrail <br>&emsp; + Trails <br>&emsp; + event: Read/Write/All <br>&emsp; + CloudTrail Insights| 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Tìm hiểu AWS Amplify <br>&emsp; + Frontend <br>&emsp; + Backend <br>&emsp; + Storage <br>&emsp; + Authentication     | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - **Thực hành:**: Giám sát Lambda với CloudWatch và X-Ray <br>&emsp; + Host source code lên Amplify <br>&emsp; + Giám sát với CloudWatch: Gỡ lỗi với logs, tạo customer metric và tạo cảnh báo với Alarm <br>&emsp; + Giám sát với X-Ray <br>&emsp; + Dọn dẹp tài nguyên. | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 10:

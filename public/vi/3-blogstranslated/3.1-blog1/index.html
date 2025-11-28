@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" class="js csstransforms3d">
-  <head><script src="/AWS_WORKSHOP_IPoG/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=AWS_WORKSHOP_IPoG/livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Hugo 0.152.2">
@@ -15,21 +15,21 @@
     <title>Blog 1 :: Báo cáo thực tập</title>
 
     
-    <link href="../../../css/nucleus.css?1762760910" rel="stylesheet">
-    <link href="../../../css/fontawesome-all.min.css?1762760910" rel="stylesheet">
-    <link href="../../../css/hybrid.css?1762760910" rel="stylesheet">
-    <link href="../../../css/featherlight.min.css?1762760910" rel="stylesheet">
-    <link href="../../../css/perfect-scrollbar.min.css?1762760910" rel="stylesheet">
-    <link href="../../../css/auto-complete.css?1762760910" rel="stylesheet">
-    <link href="../../../css/atom-one-dark-reasonable.css?1762760910" rel="stylesheet">
-    <link href="../../../css/theme.css?1762760910" rel="stylesheet">
-    <link href="../../../css/hugo-theme.css?1762760910" rel="stylesheet">
+    <link href="../../../css/nucleus.css?1764299382" rel="stylesheet">
+    <link href="../../../css/fontawesome-all.min.css?1764299382" rel="stylesheet">
+    <link href="../../../css/hybrid.css?1764299382" rel="stylesheet">
+    <link href="../../../css/featherlight.min.css?1764299382" rel="stylesheet">
+    <link href="../../../css/perfect-scrollbar.min.css?1764299382" rel="stylesheet">
+    <link href="../../../css/auto-complete.css?1764299382" rel="stylesheet">
+    <link href="../../../css/atom-one-dark-reasonable.css?1764299382" rel="stylesheet">
+    <link href="../../../css/theme.css?1764299382" rel="stylesheet">
+    <link href="../../../css/hugo-theme.css?1764299382" rel="stylesheet">
     
-    <link href="../../../css/theme-workshop.css?1762760910" rel="stylesheet">
+    <link href="../../../css/theme-workshop.css?1764299382" rel="stylesheet">
     
     
 
-    <script src="../../../js/jquery-3.3.1.min.js?1762760910"></script>
+    <script src="../../../js/jquery-3.3.1.min.js?1764299382"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -88,14 +88,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="../../../js/lunr.min.js?1762760910"></script>
-<script type="text/javascript" src="../../../js/auto-complete.js?1762760910"></script>
+<script type="text/javascript" src="../../../js/lunr.min.js?1764299382"></script>
+<script type="text/javascript" src="../../../js/auto-complete.js?1764299382"></script>
 <script type="text/javascript">
     
-        var baseurl = "http:\/\/localhost:1313\/AWS_WORKSHOP_IPoG\/\/vi";
+        var baseurl = "https:\/\/baoxanhla.github.io\/AWS_WORKSHOP_IPoG\/\/vi";
     
 </script>
-<script type="text/javascript" src="../../../js/search.js?1762760910"></script>
+<script type="text/javascript" src="../../../js/search.js?1764299382"></script>
  
   </div>
 
@@ -531,7 +531,7 @@
         "
 >
   <a href="../../../vi/4-eventparticipated/4.2-event2/">
-     <b> 4.2. </b> Event 2 
+     <b> 4.1. </b> Event 2 
     <i class="fas fa-check read-icon"></i>
     
   </a>
@@ -851,14 +851,14 @@
                        
                 <option
                   id="en"
-                  value="http://localhost:1313/AWS_WORKSHOP_IPoG/3-blogstranslated/3.1-blog1/"
+                  value="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/3-blogstranslated/3.1-blog1/"
                 >
                   English
                 </option>
                             
                 <option
                   id="vi"
-                  value="http://localhost:1313/AWS_WORKSHOP_IPoG/vi/3-blogstranslated/3.1-blog1/"
+                  value="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/3-blogstranslated/3.1-blog1/"
                   selected
                 >
                   Tiếng Việt
@@ -986,17 +986,12 @@
                     <div class="progress">
   <div class="wrapper"><nav id="TableOfContents">
   <ul>
-    <li><a href="#hướng-dẫn-kiến-trúc">Hướng dẫn kiến trúc</a></li>
-    <li><a href="#lựa-chọn-công-nghệ-và-phạm-vi-giao-tiếp">Lựa chọn công nghệ và phạm vi giao tiếp</a></li>
-    <li><a href="#the-pubsub-hub">The pub/sub hub</a></li>
-    <li><a href="#core-microservice">Core microservice</a></li>
-    <li><a href="#front-door-microservice">Front door microservice</a></li>
-    <li><a href="#staging-er7-microservice">Staging ER7 microservice</a></li>
-    <li><a href="#tính-năng-mới-trong-giải-pháp">Tính năng mới trong giải pháp</a>
-      <ul>
-        <li><a href="#1-aws-cloudformation-cross-stack-references">1. AWS CloudFormation cross-stack references</a></li>
-      </ul>
-    </li>
+    <li><a href="#tổng-quan-giải-pháp">Tổng quan giải pháp</a></li>
+    <li><a href="#cân-nhắc-về-độ-trễ-và-ghi-lại-flexcache">Cân nhắc về độ trễ và ghi lại FlexCache</a></li>
+    <li><a href="#giám-sát-và-khả-năng-hiển-thị">Giám sát và khả năng hiển thị</a></li>
+    <li><a href="#ước-tính-tco-so-với-on-premises">Ước tính TCO so với on-premises</a></li>
+    <li><a href="#kết-luận">Kết Luận</a></li>
+    <li><a href="#tác-giả">Tác Giả</a></li>
   </ul>
 </nav></div>
 </div>
@@ -1021,130 +1016,65 @@
 
 
 
-	<h1 id="bắt-đầu-với-healthcare-data-lakes-sử-dụng-microservices">Bắt đầu với healthcare data lakes: Sử dụng microservices</h1>
+	<h1 id="cách-một-khách-hàng-giảm-28-tổng-chi-phí-sở-hữu-tco-cho-việc-lưu-trữ-với-amazon-fsx-for-netapp-ontap">Cách một khách hàng giảm 28% tổng chi phí sở hữu (TCO) cho việc lưu trữ với Amazon FSx for NetApp ONTAP</h1>
+<p>bởi Sachin Bawse và Vishnu Vashist | vào ngày 08 tháng 9 năm 2025 | trong chuyên mục Advanced (300), Amazon FSx for NetApp ONTAP, Best Practices, Healthcare, Technical How-to | Permalink</p>
 <p>Các tổ chức có nhiều chi nhánh thường gặp thách thức lớn trong việc quản lý hệ thống tệp phân tán, đặc biệt khi sử dụng hạ tầng tại chỗ (on-premises) truyền thống. Việc duy trì khả năng chia sẻ tệp mượt mà giữa các vị trí địa lý khác nhau, đồng thời đảm bảo tính bảo mật, hiệu quả trong quản lý dữ liệu và xác thực người dùng đáng tin cậy, ngày càng trở nên phức tạp trong bối cảnh số hóa hiện nay.</p>
-<p>Amazon FSx for NetApp ONTAP giải quyết những thách thức này bằng cách cung cấp một giải pháp <strong>cloud-native được quản lý hoàn toàn</strong>, mang lại khả năng lưu trữ tệp hiệu năng cao với <strong>tích hợp sẵn tính năng sao chép dữ liệu (replication), đồng bộ tự động và bộ nhớ đệm thông minh (intelligent caching)</strong>.</p>
-<p>Trong bài viết này, nhóm tác giả chia sẻ cách một khách hàng đã triển khai <strong>FSx for ONTAP</strong> với cấu hình <strong>Multi-AZ</strong>, sử dụng <strong>NetApp FlexCache</strong> cho bộ nhớ đệm cục bộ và thực hiện di chuyển dữ liệu bằng <strong>SnapMirror</strong>. Trong quá trình này, họ thực hiện các bài kiểm tra hiệu năng, phân tích các đánh đổi trong thiết kế kiến trúc và đưa ra so sánh chi phí — cho thấy mức <strong>giảm 28% chi phí sở hữu tổng thể (TCO)</strong> so với giải pháp tại chỗ truyền thống.</p>
+<p>Amazon FSx for NetApp ONTAP giải quyết những thách thức này bằng cách cung cấp một giải pháp cloud-native được quản lý hoàn toàn, mang lại khả năng lưu trữ tệp hiệu năng cao với tích hợp sẵn tính năng sao chép dữ liệu (replication), đồng bộ tự động và bộ nhớ đệm thông minh (intelligent caching).</p>
+<p>Trong bài viết này, nhóm tác giả chia sẻ cách một khách hàng đã triển khai FSx for ONTAP với cấu hình Multi-AZ, sử dụng NetApp FlexCache cho bộ nhớ đệm cục bộ và thực hiện di chuyển dữ liệu bằng SnapMirror. Trong quá trình này, họ thực hiện các bài kiểm tra hiệu năng, phân tích các đánh đổi trong thiết kế kiến trúc và đưa ra so sánh chi phí — cho thấy mức giảm 28% chi phí sở hữu tổng thể (TCO) so với giải pháp tại chỗ truyền thống.</p>
 <hr>
-<h2 id="hướng-dẫn-kiến-trúc">Hướng dẫn kiến trúc</h2>
-<p>Kiến trúc cốt lõi của giải pháp xoay quanh việc triển khai <strong>Amazon FSx for NetApp ONTAP</strong> trong mô hình <strong>Multi-AZ cluster</strong> trải rộng trên hai Vùng sẵn sàng (Availability Zones), nhằm đảm bảo tính sẵn sàng cao và khả năng chịu lỗi.</p>
-<p>Các chi nhánh kết nối tới FSxN thông qua các <strong>kết nối VPN bảo mật</strong>, truy cập dữ liệu thông qua <strong>ONTAP FlexCache volumes</strong> được triển khai tại môi trường on-prem hoặc VMware. Các bộ nhớ đệm này giúp <strong>giảm băng thông và cải thiện tốc độ phản hồi</strong> nhờ phục vụ dữ liệu được truy cập thường xuyên ngay tại chỗ.</p>
-<p><strong>Kiến trúc giải pháp bây giờ như sau:</strong></p>
-<blockquote>
-<p><em>Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.</em></p>
-</blockquote>
+<h2 id="tổng-quan-giải-pháp">Tổng quan giải pháp</h2>
+<p>Kiến trúc cốt lõi của giải pháp xoay quanh việc triển khai Amazon FSx for NetApp ONTAP Multi-AZ cluster trải rộng trên hai Vùng sẵn sàng (Availability Zones), nhằm đảm bảo tính sẵn sàng cao và khả năng chịu lỗi.</p>
+<p>Các chi nhánh kết nối tới FSxN thông qua các kết nối VPN bảo mật, truy cập dữ liệu thông qua ONTAP FlexCache volumes được triển khai tại môi trường on-prem hoặc VMware. Các bộ nhớ đệm này giúp giảm băng thông và cải thiện tốc độ phản hồi nhờ phục vụ dữ liệu được truy cập thường xuyên ngay tại chỗ.</p>
+<p>Việc di chuyển dữ liệu được thực hiện bằng NetApp SnapMirror, đảm bảo sao chép dữ liệu nhất quán từ kho lưu trữ on-prem lên AWS.</p>
+<p>Hình 1: Hệ thống tệp phân tán với kiến trúc Amazon FSx hoặc NetApp ONTAP.
+<img src="../../../images/2-Proposal/distributed.png" alt="Distributed file system"></p>
+<p>Các lớp giao tiếp và bộ nhớ đệm bao gồm:
+• Chi nhánh địa phương → FlexCache volumes (phục vụ dữ liệu nóng)
+• FlexCache → FSx ONTAP origin cluster trên các AZ
+• SnapMirror → sao chép dữ liệu lên FSx, duy trì hiệu quả lưu trữ</p>
+<p>Khách hàng cũng tiến hành so sánh hiệu năng: khi truyền một tệp 50 MB, ONTAP Select cache kết nối FSx đạt 26,09 giây, so với 24,20 giây trên máy chủ tệp cục bộ, cho thấy hiệu năng gần tương đương với lưu trữ tại chỗ.</p>
 <hr>
-<p>Mặc dù thuật ngữ <em>microservices</em> có một số sự mơ hồ cố hữu, một số đặc điểm là chung:</p>
-<ul>
-<li>Chúng nhỏ, tự chủ, kết hợp rời rạc</li>
-<li>Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ</li>
-<li>Chuyên biệt để giải quyết một việc</li>
-<li>Thường được triển khai trong <strong>event-driven architecture</strong></li>
-</ul>
-<p>Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:</p>
-<ul>
-<li><strong>Nội tại</strong>: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng</li>
-<li><strong>Bên ngoài</strong>: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng</li>
-<li><strong>Con người</strong>: quyền sở hữu nhóm, quản lý <em>cognitive load</em></li>
-</ul>
+<h2 id="cân-nhắc-về-độ-trễ-và-ghi-lại-flexcache">Cân nhắc về độ trễ và ghi lại FlexCache</h2>
+<p>Tính năng ghi lại (write-back) của FlexCache đặc biệt hữu ích khi độ trễ (latency) giữa bộ nhớ đệm chi nhánh và cụm gốc vượt quá 8 ms. Trong điều kiện đó, bộ nhớ đệm giúp cải thiện hiệu năng ghi dữ liệu đáng kể.</p>
+<p>Một số yêu cầu thiết kế cần lưu ý:
+• CPU &amp; RAM: Mỗi nút trong cụm gốc cần ít nhất 128 GB RAM và khoảng 20 vCPUs để xử lý tải write-back.
+• Phiên bản ONTAP: Cụm gốc và cụm cache phải chạy ONTAP 9.15.1 trở lên để hỗ trợ write-back.
+• Giấy phép (Licensing): FlexCache (bao gồm cả write-back) đã được tích hợp sẵn, không cần mua thêm license.
+• Cluster peering: Cụm gốc và cụm cache cần được kết nối ngang hàng (peered), các server virtual machines SVMs cũng cần được vserver-peered với FlexCache bật.</p>
+<p>Những nguyên tắc này giúp đảm bảo bộ nhớ đệm hoạt động ổn định trong các mô hình chi nhánh phân tán.</p>
 <hr>
-<h2 id="lựa-chọn-công-nghệ-và-phạm-vi-giao-tiếp">Lựa chọn công nghệ và phạm vi giao tiếp</h2>
+<h2 id="giám-sát-và-khả-năng-hiển-thị">Giám sát và khả năng hiển thị</h2>
+<p>Để có cái nhìn chi tiết hơn về hiệu suất và hoạt động của FSx &amp; ONTAP ngoài dữ liệu mặc định trên Amazon CloudWatch, giải pháp sử dụng NetApp Harvest kết hợp với Grafana. Công cụ Harvest thu thập các chỉ số như hiệu năng, tỷ lệ cache hit, mức độ hiệu quả lưu trữ, và thống kê cấp volume, giúp quản trị viên có khả năng theo dõi chi tiết và chủ động tối ưu hóa.</p>
+<hr>
+<h2 id="ước-tính-tco-so-với-on-premises">Ước tính TCO so với on-premises</h2>
+<p>Để định lượng lợi ích về chi phí, khách hàng đã mô hình hóa một kịch bản lai (hybrid) để so sánh giữa FSx for ONTAP (Multi-AZ, cấu hình SSD + capacity tier tỉ lệ khoảng 30/70, throughput ~256 MB/s) với hệ thống tại chỗ tương đương.
+Kết quả cho thấy FSx for ONTAP giúp giảm ước tính 28% tổng chi phí sở hữu (TCO) so với giải pháp tại chỗ, nhờ giảm chi phí vận hành, tăng hiệu quả lưu trữ, và đơn giản hóa hạ tầng quản lý.</p>
+<hr>
+<h2 id="kết-luận">Kết Luận</h2>
+<p>Amazon FSx for NetApp ONTAP là một giải pháp mạnh mẽ cho các hệ thống tệp phân tán, đặc biệt phù hợp với mô hình nhiều chi nhánh.</p>
+<p>Thông qua triển khai Multi-AZ, FlexCache để lưu đệm cục bộ, SnapMirror để di chuyển dữ liệu, cùng hệ thống giám sát chi tiết, kiến trúc này mang lại hiệu năng gần như cục bộ, độ sẵn sàng cao, và giảm 28% TCO so với on-premises.</p>
+<p>Chiến lược triển khai này cho thấy cách tích hợp lưu trữ đám mây hiện đại có thể khắc phục các hạn chế truyền thống về băng thông, tính nhất quán và độ phức tạp vận hành trong các hệ thống phân tán nhiều địa điểm.</p>
+<hr>
+<h2 id="tác-giả">Tác Giả</h2>
 <table>
   <thead>
       <tr>
-          <th>Phạm vi giao tiếp</th>
-          <th>Các công nghệ / mô hình cần xem xét</th>
+          <th style="text-align: left"></th>
+          <th style="text-align: left"></th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td>Trong một microservice</td>
-          <td>Amazon Simple Queue Service (Amazon SQS), AWS Step Functions</td>
+          <td style="text-align: left"><img src="../../../images/2-Proposal/Sachin-Bawse.png" width="200"></td>
+          <td style="text-align: left"><strong>Sachin Bawse</strong><br>Sachin là Kiến trúc sư Giải pháp Chuyên gia về Lưu trữ (GTM Specialist Storage Solution Architect) tại Amazon Web Services (AWS), nơi anh chuyên về tối ưu hóa các giải pháp lưu trữ, hỗ trợ di chuyển dữ liệu, và nâng cao hiệu suất khối lượng công việc cho khách hàng. Ngoài công việc, Sachin là một người đam mê khám phá, thích du lịch đến những điểm đến mới, tìm hiểu các nền văn hóa khác nhau và thưởng thức ẩm thực đa dạng.</td>
       </tr>
       <tr>
-          <td>Giữa các microservices trong một dịch vụ</td>
-          <td>AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS)</td>
-      </tr>
-      <tr>
-          <td>Giữa các dịch vụ</td>
-          <td>Amazon EventBridge, AWS Cloud Map, Amazon API Gateway</td>
+          <td style="text-align: left"><img src="../../../images/2-Proposal/Vishnu-Vashist.png" width="200"></td>
+          <td style="text-align: left"><strong>Vishnu Vashist</strong><br>Vishnu Vashist là Kiến trúc sư Giải pháp Thành công Đối tác (Partner Success Solutions Architect) trong bộ phận Đối tác (Partner Org) của AWS, nơi anh phụ trách các tài khoản thuộc lĩnh vực Y tế, Chăm sóc sức khỏe, Khoa học đời sống (HCLS) cũng như Du lịch, Vận tải và Logistics. Anh chuyên về di chuyển và hiện đại hóa hệ thống, hỗ trợ các dự án di chuyển quy mô lớn lên AWS và hướng dẫn khách hàng cùng đối tác về thiết kế kiến trúc và hạ tầng trên AWS.</td>
       </tr>
   </tbody>
 </table>
-<hr>
-<h2 id="the-pubsub-hub">The pub/sub hub</h2>
-<p>Việc sử dụng kiến trúc <strong>hub-and-spoke</strong> (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.</p>
-<ul>
-<li>Mỗi microservice chỉ phụ thuộc vào <em>hub</em></li>
-<li>Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất</li>
-<li>Giảm số lượng synchronous calls vì pub/sub là <em>push</em> không đồng bộ một chiều</li>
-</ul>
-<p>Nhược điểm: cần <strong>phối hợp và giám sát</strong> để tránh microservice xử lý nhầm message.</p>
-<hr>
-<h2 id="core-microservice">Core microservice</h2>
-<p>Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:</p>
-<ul>
-<li><strong>Amazon S3</strong> bucket cho dữ liệu</li>
-<li><strong>Amazon DynamoDB</strong> cho danh mục dữ liệu</li>
-<li><strong>AWS Lambda</strong> để ghi message vào data lake và danh mục</li>
-<li><strong>Amazon SNS</strong> topic làm <em>hub</em></li>
-<li><strong>Amazon S3</strong> bucket cho artifacts như mã Lambda</li>
-</ul>
-<blockquote>
-<p>Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.</p>
-</blockquote>
-<hr>
-<h2 id="front-door-microservice">Front door microservice</h2>
-<ul>
-<li>Cung cấp API Gateway để tương tác REST bên ngoài</li>
-<li>Xác thực &amp; ủy quyền dựa trên <strong>OIDC</strong> thông qua <strong>Amazon Cognito</strong></li>
-<li>Cơ chế <em>deduplication</em> tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-<ol>
-<li>SNS deduplication TTL chỉ 5 phút</li>
-<li>SNS FIFO yêu cầu SQS FIFO</li>
-<li>Chủ động báo cho sender biết message là bản sao</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h2 id="staging-er7-microservice">Staging ER7 microservice</h2>
-<ul>
-<li>Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute</li>
-<li>Step Functions Express Workflow để chuyển ER7 → JSON</li>
-<li>Hai Lambda:
-<ol>
-<li>Sửa format ER7 (newline, carriage return)</li>
-<li>Parsing logic</li>
-</ol>
-</li>
-<li>Kết quả hoặc lỗi được đẩy lại vào pub/sub hub</li>
-</ul>
-<hr>
-<h2 id="tính-năng-mới-trong-giải-pháp">Tính năng mới trong giải pháp</h2>
-<h3 id="1-aws-cloudformation-cross-stack-references">1. AWS CloudFormation cross-stack references</h3>
-<p>Ví dụ <em>outputs</em> trong core microservice:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">Outputs</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Bucket</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Bucket</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Bucket</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">ArtifactBucket</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref ArtifactBucket</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-ArtifactBucket</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Topic</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Topic</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Topic</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">Catalog</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">Ref Catalog</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-Catalog</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">CatalogArn</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Value</span>: !<span style="color:#ae81ff">GetAtt Catalog.Arn</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">Export</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">Name</span>: !<span style="color:#ae81ff">Sub ${AWS::StackName}-CatalogArn</span>
-</span></span></code></pre></div>
+
 
 
 
@@ -1845,19 +1775,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="../../../js/clipboard.min.js?1762760910"></script>
-    <script src="../../../js/perfect-scrollbar.min.js?1762760910"></script>
-    <script src="../../../js/perfect-scrollbar.jquery.min.js?1762760910"></script>
-    <script src="../../../js/jquery.sticky.js?1762760910"></script>
-    <script src="../../../js/featherlight.min.js?1762760910"></script>
-    <script src="../../../js/highlight.pack.js?1762760910"></script>
+    <script src="../../../js/clipboard.min.js?1764299382"></script>
+    <script src="../../../js/perfect-scrollbar.min.js?1764299382"></script>
+    <script src="../../../js/perfect-scrollbar.jquery.min.js?1764299382"></script>
+    <script src="../../../js/jquery.sticky.js?1764299382"></script>
+    <script src="../../../js/featherlight.min.js?1764299382"></script>
+    <script src="../../../js/highlight.pack.js?1764299382"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="../../../js/modernizr.custom-3.6.0.js?1762760910"></script>
-    <script src="../../../js/learn.js?1762760910"></script>
-    <script src="../../../js/hugo-learn.js?1762760910"></script>
+    <script src="../../../js/modernizr.custom-3.6.0.js?1764299382"></script>
+    <script src="../../../js/learn.js?1764299382"></script>
+    <script src="../../../js/hugo-learn.js?1764299382"></script>
 
-    <link href="../../../mermaid/mermaid.css?1762760910" rel="stylesheet" />
-    <script src="../../../mermaid/mermaid.js?1762760910"></script>
+    <link href="../../../mermaid/mermaid.css?1764299382" rel="stylesheet" />
+    <script src="../../../mermaid/mermaid.js?1764299382"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

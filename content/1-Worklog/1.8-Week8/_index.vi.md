@@ -7,17 +7,19 @@ pre: " <b> 1.8. </b> "
 
 ### Mục tiêu tuần 8:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Tự động hóa việc tạo tài nguyên bằng CloudFormation 
+* Quản lý cấu hình hệ thống
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   |  - Tìm hiểu AWS CloudFormation, Cloud9 <br>&emsp; + Template: Json, Yaml <br>&emsp; + Stack <br>&emsp; + Drift Detection<br> -**Thực hành** <br>&emsp; + Sử dụng Cloud9 để tạo CloudFormation template cơ bản | 11/08/2025   | 11/08/2025      |
+| 3   | - **Thực hành:** CloudFormation nâng cao: <br>&emsp; + Tạo Lambda Funtion <br>&emsp; + Tạo Stack <br>&emsp; + Kết nối EC2 instance <br>&emsp; + Ánh xạ và Stacksets <br>&emsp; + Drift Detecion <br>&emsp; + Dọn dẹp tài nguyên   | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Tìm hiểu AWS Systems Manager (SSM) <br>&emsp; + Patch Manager <br>&emsp; + Run Command <br>&emsp; + Session manager <br> - **Thực hành** <br> &emsp; + Tạo EC2 instance, IAM Role và gán IAM Role <br> &emsp; + Cấu hình Patch Manager + Run Comman <br> &emsp; + Dọn dẹp tài nguyên   | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Tìm hiểu AWS CDK <br> **Thực hành**: AWS CDK với VS Code <br>&emsp; + Tạo EC2 instance public <br>&emsp; + Cấu hình VS môi trường Code <br>&emsp; + Tạo cụm ECS, Appilcation và configure API Gateway Load Balancer <br>&emsp; + Tạo Lambda function, API Gateway, S3 <br>&emsp; + Triển khai Stack và tải tập tin lên S3 <br>&emsp; + Tạo các Nested Stack với CDk và triển khai <br>&emsp; + Dọn dẹp tài nguyên. | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - **Thực hành**: Session Manager: <br> &emsp; + Tạo EC2 instance private, public và IAM Role <br> &emsp; + Kết nối đến máy chủ Public <br> &emsp; + Tạo kết nối đến máy chủ EC2 Private <br> &emsp; + Cập nhật IAM Role để truy cập vào S3 + Tạo S3 Buckets và S3 Gateway endpoint <br> &emsp; + Theo dõi session logs với SSM Session Manager <br> &emsp; + Cấu hình Port Forwarding <br> &emsp; + Dọn dẹp tài nguyên. | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+
+
 
 
 ### Kết quả đạt được tuần 8:
