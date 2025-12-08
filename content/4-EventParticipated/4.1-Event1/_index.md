@@ -15,9 +15,12 @@ pre: " <b> 4.1. </b> "
 
 ### Speakers
 
-- **<Add speaker names here>**  
-- **<Add more if needed>**
-
+- **Kien Nguyen** - Solutions Architect
+- **Jun Kai Loke** - AI/ML Specialist SA, AWS
+- **Tamelly Lim** - Storage Specialist SA, AWS
+- **Binh Tran** - Senior Solutions Architect, AWS
+- **Taiki Dang** - Solutions Architect, AWS
+- **Michael Armentano** - Principal WW GTM Specialist, AWS
 ---
 
 ### Key Highlights

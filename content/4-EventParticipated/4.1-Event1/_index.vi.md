@@ -15,9 +15,12 @@ pre: " <b> 4.1. </b> "
 
 ### Danh Sách Diễn Giả
 
-- **<Điền tên diễn giả tại đây>**
-- **<Điền thêm nếu có>**
-
+- **Kien Nguyen** - Solutions Architect
+- **Jun Kai Loke** - AI/ML Specialist SA, AWS
+- **Tamelly Lim** - Storage Specialist SA, AWS
+- **Binh Tran** - Senior Solutions Architect, AWS
+- **Taiki Dang** - Solutions Architect, AWS
+- **Michael Armentano** - Principal WW GTM Specialist, AWS
 
 ### Nội Dung Nổi Bật
 

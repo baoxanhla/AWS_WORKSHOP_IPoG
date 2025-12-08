@@ -5,118 +5,82 @@ chapter: false
 pre: " <b> 3.1. </b> "
 ---
 
-# How a customer reduced storage TCO by 28% with Amazon FSx for NetApp ONTAP
+# How a Customer Reduced Total Cost of Ownership (TCO) by 28% for Storage with Amazon FSx for NetApp ONTAP
+by **Sachin Bawse** and **Vishnu Vashist** | on **September 08, 2025** | in Advanced (300), Amazon FSx for NetApp ONTAP, Best Practices, Healthcare, Technical How-to | Permalink
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+Organizations with multiple branch offices often face significant challenges in managing distributed file systems, especially when relying on traditional on-premises infrastructure. Maintaining smooth file sharing across geographically dispersed locations—while ensuring security, efficient data management, and reliable user authentication—is becoming increasingly complex in today’s digital landscape.
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+Amazon FSx for NetApp ONTAP addresses these challenges by providing a **fully managed cloud-native file storage solution**, offering high-performance storage with **built-in replication, automated synchronization, and intelligent caching**.
 
----
-
-## Architecture Guidance
-
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+In this article, the authors share how a customer deployed **FSx for ONTAP** with a **Multi-AZ configuration**, using **NetApp FlexCache** for local caching and conducting data migration using **SnapMirror**. During this process, they completed performance tests, analyzed architectural trade-offs, and performed a cost comparison—showing a **28% reduction in total cost of ownership (TCO)** compared to a traditional on-premises solution.
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## Solution Overview
+The core architecture centers around deploying an **Amazon FSx for NetApp ONTAP Multi-AZ cluster** spanning two Availability Zones to ensure high availability and fault tolerance.
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+Branch locations connect to FSxN through **secure VPN connections**, accessing data via **ONTAP FlexCache volumes** deployed on-premises or within VMware environments. These caches help **reduce bandwidth usage and improve responsiveness** by serving frequently accessed data locally.
 
----
+Data migration is performed using **NetApp SnapMirror**, ensuring consistent data replication from the on-prem environment to AWS.
 
-## Technology Choices and Communication Scope
+> *Figure 1: Distributed file system with **Amazon FSx** or **NetApp ONTAP** architecture.*
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+![Image](/images/2-Proposal/distributed.png)
+
+Communication and caching layers include:
+* Local branch → FlexCache volumes (serving hot data)
+* FlexCache → FSx ONTAP origin cluster across AZs
+* SnapMirror → replicating data to FSx, ensuring storage efficiency
+
+The customer also conducted performance comparisons: when transferring a 50 MB file, **ONTAP Select cache connected to FSx** achieved 26.09 seconds, compared to **24.20 seconds on a local file server**, demonstrating near on-prem performance.
 
 ---
 
-## The Pub/Sub Hub
+## Latency and FlexCache Write-Back Considerations
+The **write-back** feature of FlexCache is particularly helpful when latency between the branch cache and the origin cluster exceeds **8 ms**. Under these conditions, caching significantly improves write performance.
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+Key architectural requirements include:
+* **CPU & RAM**: Each node in the origin cluster requires at least **128 GB RAM** and approximately **20 vCPUs** to support write-back workloads.
+* **ONTAP Version**: Both the origin cluster and the cache must run **ONTAP 9.15.1 or later** to enable write-back.
+* **Licensing**: FlexCache (including write-back) is **built-in**; no additional license is needed.
+* **Cluster Peering**: The origin and cache clusters must be **peered**, and their storage virtual machines (**SVMs**) must also be **vserver-peered** with FlexCache enabled.
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
-
----
-
-## Core Microservice
-
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+These principles ensure cache stability in distributed branch deployments.
 
 ---
 
-## Front Door Microservice
+## Monitoring and Visibility
+To gain deeper insight into FSx & ONTAP performance beyond default **Amazon CloudWatch** metrics, the solution uses **NetApp Harvest** with **Grafana**.
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+Harvest collects metrics such as:
+* performance
+* cache hit ratio
+* storage efficiency
+* volume-level statistics
 
----
-
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+This provides administrators with detailed observability and proactive optimization capabilities.
 
 ---
 
-## New Features in the Solution
+## TCO Estimate Compared to On-Premises
+To quantify the cost benefits, the customer modeled a hybrid scenario comparing **FSx for ONTAP** (Multi-AZ, SSD + capacity tier at ~30/70 ratio, throughput ~256 MB/s) to an **equivalent on-prem system**.
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Results showed that **FSx for ONTAP reduces TCO by an estimated 28%**, driven by lower operational overhead, improved storage efficiency, and simplified infrastructure management.
+
+---
+
+## Conclusion
+**Amazon FSx for NetApp ONTAP** is a powerful solution for distributed file systems, especially suited for multi-branch architectures.
+
+Through **Multi-AZ deployment, FlexCache for local acceleration, SnapMirror for migration**, and detailed **monitoring**, this architecture delivers **near-local performance, high availability**, and **a 28% reduction in TCO compared to on-premises solutions**.
+
+This deployment demonstrates how modern cloud-integrated storage addresses traditional limitations of bandwidth, consistency, and operational complexity across multi-site environments.
+
+---
+
+## Authors
+
+|
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sachin Bawse ![Image](/images/2-Proposal/Sachin-Bawse.png) | Sachin is a **GTM Specialist Storage Solution Architect at Amazon Web Services (AWS)**, where he focuses on **storage optimization, data migration**, and **performance improvement** for customer workloads. Outside work, Sachin is passionate about **traveling**, exploring **new destinations**, discovering **different cultures**, and enjoying **diverse cuisine**. |
+| Vishnu Vashist ![Image](/images/2-Proposal/Vishnu-Vashist.png) | Vishnu Vashist is a **Partner Success Solutions Architect** in the **AWS Partner Organization**, supporting customers across **Healthcare & Life Sciences (HCLS)** as well as **Travel, Transportation, and Logistics**. He specializes in **migration and modernization**, supporting large-scale AWS migration projects and guiding customers and partners on architecture and infrastructure design. |

@@ -5,118 +5,113 @@ chapter: false
 pre: " <b> 3.2. </b> "
 ---
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Automating vector embedding generation in  Aurora PostgreSQL with  Bedrock
+by **Domenico di Salvia** and **Andrea Filippo La Scola** | on **September 05, 2025** | in Advanced (300), Amazon Aurora, Amazon Bedrock, Technical How-to | Permalink
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+Vector embeddings have significantly transformed the way we interact with unstructured data in generative AI applications. Embeddings are mathematical representations that enable semantic search, recommendation systems, and several natural language processing tasks by capturing the essence of text, images, and other content in a machine-processable form. In applications using **Retrieval-Augmented Generation (RAG)** or similar AI solutions, keeping embeddings up to date as data changes is crucial to ensure search and recommendation results remain relevant.
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
-
----
-
-## Architecture Guidance
-
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+Although **Bedrock** provides **fully managed RAG solutions**, many organizations have specific requirements that lead them to build custom vector database solutions using **PostgreSQL** along with the **pgvector extension**. In this article, the authors present multiple approaches for automatically generating embeddings in **Aurora PostgreSQL** when data is inserted or updated. Each approach makes trade-offs in complexity, latency, reliability, and scalability so you can choose the strategy that best fits your application.
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## Solution Overview
+When using Aurora PostgreSQL with the pgvector extension to build a vector database, you need a reliable mechanism to generate or update embeddings whenever the underlying data changes. The general workflow is:
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+1. Detect when new or modified data requires an embedding.
+2. Send that content to a Bedrock embedding model (e.g., Titan).
+3. Receive the vector embedding.
+4. Store it alongside the source data.
 
----
+In the article, the authors use **Titan** as the underlying embedding model via Bedrock because it provides production-grade embeddings without managing additional infrastructure. You may also choose other supported models (e.g., Cohere Embed, Anthropic Claude) or even custom models via **SageMaker** or open-source libraries.
 
-## Technology Choices and Communication Scope
-
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+### Prerequisites
+Before implementing any approach, ensure you have:
+- An **Aurora PostgreSQL cluster** with **pgvector** enabled.
+- **IAM roles & policies** configured to allow **Bedrock access**.
+- For approaches using **AWS Lambda**, VPC configuration allowing Lambda to access both the database and Bedrock.
+- For the **aws_ml extension**, a compatible database version.
+- For **pg_cron**, ensure the extension is enabled and configured.
+- The authors provide a GitHub repository with an AWS CDK stack and source code to deploy the demo environment.
 
 ---
 
-## The Pub/Sub Hub
+## Implementation Approaches
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+The article describes five automation strategies, each with pros and cons.
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+### 1. **Database triggers + aws_ml extension (synchronous)**
+- Trigger inside the database calls aws_ml synchronously within the same transaction to generate embeddings.
+- Includes sample PL/pgSQL code for generating and storing embeddings.
+- **Pros:** immediate consistency, few external components.
+- **Cons:** slows down transactions, limited scalability, complex error handling, risk of timeouts.
 
----
+### 2. **Database triggers + aws_lambda extension (synchronous)**
+- Trigger synchronously invokes a Lambda function, which generates and returns the embedding.
+- Logic is separated from the database but still synchronous.
+- **Pros:** more flexibility in Lambda (pre/post-processing), better error observability.
+- **Cons:** still blocks the transaction, Lambda latency (cold starts), more configuration overhead.
 
-## Core Microservice
+### 3. **Database triggers + aws_lambda extension (asynchronous)**
+- Trigger invokes Lambda asynchronously, returning immediately without waiting for the embedding.
+- Lambda later writes the embedding into a document_embeddings table (e.g., via RDS Data API).
+- **Pros:** transactions are not blocked; improved write throughput.
+- **Cons:** eventual consistency; more complex error handling; slower embedding generation.
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+### 4. **SQS queue + Lambda batch processing (asynchronous)**
+- Trigger sends data changes into an SQS queue; a Lambda consumer processes items in batches.
+- Batching reduces API calls, increases retries, and improves fault tolerance.
+- **Pros:** highly scalable, robust error handling, efficient API usage.
+- **Cons:** longer delay between data changes and embedding availability; more operational complexity.
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
-
----
-
-## Front Door Microservice
-
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
-
----
-
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+### 5. **Scheduled updates using pg_cron extension (asynchronous)**
+- pg_cron schedules periodic jobs to fetch records requiring embeddings, process them in batches, and update results.
+- No triggers, so initial data writes are unaffected.
+- **Pros:** simple architecture, fewer external dependencies.
+- **Cons:** delayed embedding generation, batch overhead, potential database load during cron runs.
 
 ---
 
-## New Features in the Solution
+## Design Factors to Consider
+When selecting a production strategy, consider:
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+- **Bedrock API rate limits** – heavy usage may require batching or throttling.
+- **Token limits** – long text may need chunking.
+- **Costs** – dependent on Lambda invocations, API usage, and other AWS services.
+- **Latency requirements** – each method has different delays.
+- **Database write performance** – synchronous methods slow down transactions.
+- **Error handling** – asynchronous architectures handle retries more robustly.
+- **Index maintenance** – vector indexes degrade over time and require periodic optimization.
+
+---
+
+## Decision Tree
+The authors provide a decision diagram to help choose an embedding strategy based on application needs (latency, consistency, complexity). Start with simpler approaches (e.g., option 1 or 5) and evolve as requirements grow.
+
+They also note the need for vector index maintenance — depending on the index type, periodic maintenance is required to preserve search quality and performance.
+
+A complete solution, deployment scripts, and sample code are available in the GitHub repository linked in the article.
+
+---
+
+## Cleanup
+To avoid unnecessary costs, the authors recommend:
+1. Deleting all CloudFormation stacks used for the demo.
+2. Removing any additional AWS resources created during testing.
+
+---
+
+## Conclusion
+Automating embedding generation in Aurora PostgreSQL ensures that AI capabilities such as semantic search, recommendations, and data retrieval stay up to date as your data evolves. Keeping embeddings synchronized with data changes maintains relevance and accuracy for AI applications.
+
+The article outlines a wide range of methods—from triggers, cron jobs, and queues to batch solutions—each with trade-offs around latency, scalability, consistency, and operational complexity. The best choice depends on your application’s tolerance for delay, write volume, and operational overhead.
+
+The authors encourage reviewing the accompanying GitHub repository for full implementation details and example code. Feedback and contributions via issues or pull requests are welcome.
+
+---
+
+## Authors
+
+| |
+| --- | ----------------------------------------------------------------------------- |
+| Andrea Filippo La Scola ![Image](/images/2-Proposal/andrea.png) | **Andrea** is a Partner Solutions Architect at AWS specializing in **data analytics** and **serverless architectures**. He supports AWS partners and customers in **Italy** in designing innovative solutions based on AWS services. |
+| Domenico di Salvia ![Image](/images/2-Proposal/domenico.png) | **Domenico** is a **Senior Database Specialist Solutions Architect** at AWS. He works with customers across the **EMEA** region, providing technical guidance for database projects. He helps them maximize value when using or migrating to AWS by designing cloud database architectures that are **scalable, secure, high-performance, sustainable, cost-efficient, and reliable**. |

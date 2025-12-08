@@ -14,7 +14,7 @@ chapter: false
 
 &emsp; **Trường:** Đại học FPT TP.HCM
 
-&emsp; **Ngành:** Trí tuệ nhân tạo
+&emsp; **Ngành:** Trí tuệ nhân tạo (AI)
 
 &emsp; **MSSV** SE181700
 

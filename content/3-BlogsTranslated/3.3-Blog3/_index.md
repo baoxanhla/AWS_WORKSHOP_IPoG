@@ -5,118 +5,157 @@ chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+---
+title: "Blog 3"
+weight: 1
+chapter: false
+pre: " <b> 3.3. </b> "
+---
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+# Group database tables under AWS Database Migration Service tasks for PostgreSQL source engine
+by **Manojit Saha Sardar** and **Chirantan Pandya** | on **September 05, 2025** | in **Amazon Aurora**, **AWS Database Migration Service**, **Expert (400)**, **PostgreSQL compatible**, **RDS for PostgreSQL**, Technical How-to | Permalink
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+In large-scale data migration projects using **AWS DMS** (Database Migration Service), properly **grouping source tables** into tasks is crucial for ensuring high performance and avoiding latency during the **full load** or **CDC** phases. In this article, the authors demonstrate how to analyze the PostgreSQL source database to determine optimal task sizing and table grouping, helping you plan the migration in a way that minimizes latency and maximizes throughput.
 
 ---
 
-## Architecture Guidance
-
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+## Background & Motivation
+During migration, certain tasks may run slowly or become bottlenecks due to suboptimal grouping — for example, combining too many small tables or mixing extremely large tables with smaller ones.  
+Delays can arise during both **full load** and **CDC** because of resource contention, I/O bottlenecks, or uneven load distribution.  
+By analyzing table characteristics and system metrics, you can make well-informed decisions regarding the number of DMS tasks, grouping strategy, and identifying tables that should be isolated.
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## Solution Overview
+The approach combines metadata from the source database (catalogs, statistical views) with information about hardware and workload to:
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+1. Determine the appropriate number of DMS tasks  
+2. Group tables into balanced tasks  
+3. Isolate “special” tables (for example: very large tables, tables with LOBs) to avoid cross-impact  
 
----
+Proposed workflow:
 
-## Technology Choices and Communication Scope
+1. Create a **control table** on the source database  
+2. Populate metadata (size, partitions, indexes, LOB presence, DML statistics)  
+3. Monitor daily changes/growth  
+4. Classify tables by step/priority  
+5. Group tables into tasks  
+6. Execute migration based on these groups  
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+This method helps minimize latency and provides a more accurate estimation of task size.
 
----
+> *The following diagram illustrates the solution architecture.*
 
-## The Pub/Sub Hub
-
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
-
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+![Image](/images/2-Proposal/table.png)
 
 ---
 
-## Core Microservice
-
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+## Prerequisites
+You need:
+* Knowledge of **AWS DMS** (Database Migration Service)  
+* A PostgreSQL source database and the ability to run SQL / PL/pgSQL scripts to collect metadata  
 
 ---
 
-## Front Door Microservice
+## Step 1: Create the control table
+On the PostgreSQL source database, create a table (for example, `TABLE_MAPPING`) to store metadata for each candidate table:
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+CREATE TABLE TABLE_MAPPING (
+  OWNER             VARCHAR(30),
+  OBJECT_NAME       VARCHAR(30),
+  OBJECT_TYPE       VARCHAR(30),
+  SIZE_IN_MB        NUMERIC(12,4),
+  STEP              INTEGER,
+  IGNORE            CHAR(3),
+  PARTITIONED       CHAR(3),
+  PART_NUM          INTEGER,
+  SPECIAL_HANDLING  CHAR(3),
+  PK_PRESENT        CHAR(3),
+  UK_PRESENT        CHAR(3),
+  LOB_COLUMN        INTEGER,
+  GROUPNUM          INTEGER,
+  TOTAL_DML         INTEGER
+);
+
+This table stores one row for each table (or each partition), containing metrics such as table size, number of partitions, presence of PK/UK, number of LOB columns, total DML, and more.
 
 ---
 
-## Staging ER7 Microservice
+## Step 2: Populate the control table
+Use PostgreSQL system catalogs and statistical views (such as pg_tables, pg_partitioned_table, pg_inherits, and statistical views) to collect:
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+* Table size and partitioning information
+* Number of indexes, and whether primary / unique keys exist
+* Number of LOB columns
+* Amount of DML (insert / update / delete)
+* Partition statistics (min, max, average size)
+
+This provides a metadata + workload “snapshot” to guide your table grouping decisions.
 
 ---
 
-## New Features in the Solution
+## Step 3: Monitor the change level
+Track the amount of DML activity on each table over time. This helps determine which tables are “hot” (frequently changing) and which are more static, which should be taken into account during grouping.
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+---
+
+## Step 4: Classify tables / assign step numbers
+Based on table size, change frequency, special handling needs (LOB, missing PK), or partitioning, assign a step number or priority to each table. For example:
+
+* Step 1: small tables with low change rate  
+* Step 2: medium tables with moderate change  
+* Step N: very large tables or tables with heavy change activity  
+
+You can also mark **IGNORE** for tables you do not want included in a specific task, or **SPECIAL_HANDLING** for tables requiring isolation or special treatment.
+
+---
+
+## Step 5: Group tables into tasks
+Use the control table and the classification to group tables so that:
+
+* Each task has a balanced workload (size + change rate)  
+* Very large tables (e.g., > 2 TB) can be isolated  
+* Tables with LOBs or missing PK should be grouped carefully or isolated  
+* High-change tables can be separated to avoid affecting others  
+* The total number of tasks should not be excessive and should match the capacity of the replication instance  
+
+The goal is to reduce lag, minimize resource contention, and evenly distribute workload across tasks.
+
+---
+
+## Factors to consider
+When grouping and sizing tasks, consider:
+
+* **Database object size**: extremely large tables should be isolated or handled separately  
+* **Partitioned vs non-partitioned**: partitioned tables may allow parallel migration  
+* **Presence of PK / unique index**: DMS requires PK/UK for LOB handling and avoiding duplicates  
+* **Use of LOBs**: LOB-heavy tables increase complexity and migration cost — isolating them is recommended  
+* **Change volume (CDC)**: high-change tables should be grouped carefully to avoid CDC lag  
+* **Parallelism & resource limits**: replication instance capacity (CPU, I/O), network bandwidth, etc., determine the optimal number of tasks  
+
+---
+
+## Reference architecture & workflow
+The article includes a diagram showing how source tables are classified, grouped, and processed in parallel migration tasks (not shown here).  
+It also describes how the control table is maintained during migration and used to track progress and adjust groupings as needed.
+
+---
+
+## Summary & recommendations
+By:
+
+* Systematically analyzing metadata  
+* Classifying and grouping tables based on characteristics and workload  
+* Isolating high-risk tables (very large, LOB, missing PK)  
+* Balancing load across tasks  
+
+You can reduce migration risks, improve task size estimation, and achieve a smooth, high-performance migration.
+
+---
+
+## Authors
+
+|
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Manojit Saha Sardar ![Image](/images/2-Proposal/manojit.png) | **Manojit** is a **Senior Database Engineer** at AWS and is recognized as an **expert** in AWS DMS, Amazon RDS, and Amazon RDS for PostgreSQL. In his role at AWS, he **collaborates with customers** to resolve **various data transfer scenarios** and **supports challenges** involving Amazon RDS for Oracle and Amazon RDS for PostgreSQL. |
+| Chirantan Pandya ![Image](/images/2-Proposal/chirantan.png) | **Chirantan** is a **Database Engineer (AWS Countdown Premium)** and an expert in AWS DMS and Amazon RDS for PostgreSQL. At AWS, he **works closely with customers** to provide **guidance and technical support** for **database migration projects**, as well as projects involving **Amazon RDS for PostgreSQL and Oracle**. |

@@ -5,118 +5,156 @@ chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# Nhóm các bảng cơ sở dữ liệu trong tác vụ AWS Database Migration Service (DMS) cho nguồn là PostgreSQL
+bởi **Manojit Saha Sardar** và **Chirantan Pandya** | vào **ngày 05 tháng 9 năm 2025**| trong **Amazon Aurora**, **AWS Database Migration Service, Expert (400), PostgreSQL compatible, RDS for PostgreSQL,** Technical How-to | Permalink
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
-
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
-
----
-
-## Hướng dẫn kiến trúc
-
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
-
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
-
-**Kiến trúc giải pháp bây giờ như sau:**
-
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+Trong các dự án di chuyển dữ liệu lớn sử dụng **AWS DMS** (Database Migration Service), việc **nhóm các bảng nguồn** vào các tác vụ (tasks) một cách hợp lý là rất quan trọng để đảm bảo hiệu năng tốt và tránh độ trễ trong giai đoạn **full load** hoặc **CDC**. Trong bài viết này, các tác giả hướng dẫn cách phân tích cơ sở dữ liệu PostgreSQL nguồn để xác định kích thước task tối ưu và cách nhóm bảng, giúp bạn lên kế hoạch di chuyển dữ liệu sao cho giảm thiểu độ trễ và tối đa hóa thông lượng. 
 
 ---
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
-
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+## Bối cảnh & động lực
+Khi di chuyển, có thể xảy ra tình huống một số nhiệm vụ bị chậm hoặc nghẽn do cách nhóm bảng không hợp lý — chẳng hạn gộp quá nhiều bảng nhỏ hoặc trộn bảng rất lớn với bảng nhỏ khác. 
+ Sự chậm trễ có thể phát sinh trong cả pha **full load** hoặc khi áp dụng thay đổi theo **CDC** do cạnh tranh tài nguyên, nghẽn I/O, hoặc phân bố tải không đều. 
+ Bằng cách phân tích đặc tính bảng và các chỉ số hệ thống, bạn có thể đưa ra lựa chọn sáng suốt về số lượng task DMS, cách gộp bảng, và bảng nào cần tách riêng. 
 
 ---
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+## Tổng quan giải pháp
+Cách tiếp cận kết hợp metadata từ database nguồn (catalog, view thống kê) cùng với thông tin phần cứng và tải hoạt động để:
+1. Xác định số task DMS thích hợp
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+2. Phân nhóm bảng vào các task sao cho cân bằng
+
+3. Cô lập các bảng “đặc biệt” (ví dụ: rất lớn, chứa LOB) để tránh ảnh hưởng chéo
+
+Luồng công việc đề xuất:
+
+1. Tạo **control table** trên database nguồn
+
+2. Điền thông tin metadata (kích thước, partition, index, LOB, thống kê DML)
+
+3. Giám sát mức độ thay đổi / tăng trưởng hàng ngày
+
+4.Phân loại bảng theo bước / ưu tiên
+
+5. Gộp bảng vào các nhóm cho mỗi task
+
+6. Triển khai di chuyển theo các nhóm đó
+
+Phương pháp này giúp giảm thiểu độ trễ và đưa ra ước tính về kích thước task chính xác hơn. 
+
+> *Sơ đồ sau minh họa kiến trúc giải pháp.
+
+![Image](/images/2-Proposal/table.png)
+
+## Yêu cầu tiên quyết
+Bạn cần:
+* Có kiến thức về **AWS DMS** (Database Migration Service) 
+* Database PostgreSQL nguồn, và khả năng chạy các script SQL / PL/pgSQL để thu thập metadata 
+
+## Bước 1: Tạo bảng control
+Trên database nguồn PostgreSQL, tạo bảng (ví dụ TABLE_MAPPING) để chứa metadata của mỗi bảng ứng cử:
+CREATE TABLE TABLE_MAPPING (
+  OWNER             VARCHAR(30),
+  OBJECT_NAME       VARCHAR(30),
+  OBJECT_TYPE       VARCHAR(30),
+  SIZE_IN_MB        NUMERIC(12,4),
+  STEP              INTEGER,
+  IGNORE            CHAR(3),
+  PARTITIONED       CHAR(3),
+  PART_NUM          INTEGER,
+  SPECIAL_HANDLING  CHAR(3),
+  PK_PRESENT        CHAR(3),
+  UK_PRESENT        CHAR(3),
+  LOB_COLUMN        INTEGER,
+  GROUPNUM          INTEGER,
+  TOTAL_DML         INTEGER
+);
+
+Bảng này lưu một dòng cho mỗi bảng (hoặc mỗi phân vùng), chứa các chỉ số như kích thước, số phân vùng, có PK/UK hay không, số cột LOB, tổng số DML, v.v. 
 
 ---
 
-## The pub/sub hub
+## Bước 2: Điền bảng control
+Sử dụng catalog hệ thống PostgreSQL và các view thống kê (ví dụ pg_tables, pg_partitioned_table, pg_inherits, và các view thống kê) để thu thập:
+* Kích thước bảng, thông tin partitioning
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+* Số lượng index, có hay không có primary / unique key
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+* Số cột LOB
 
----
+* Số lượng DML (insert / update / delete)
 
-## Core microservice
+* Thống kê phân vùng (min, max, trung bình kích thước)
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+Điều này giúp bạn có “snapshot” metadata + workload để suy xét khi nhóm bảng. 
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+--- 
 
----
+## Bước 3: Giám sát mức độ thay đổi
+Theo dõi lượng hoạt động DML trên mỗi bảng theo thời gian. Điều này giúp xác định bảng nào “nóng” (thay đổi nhiều) và bảng nào ít thay đổi, từ đó cân nhắc khi nhóm. 
 
-## Front door microservice
+--- 
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+## Bước 4: Phân loại bảng / gán bước
+Dựa vào kích thước bảng, tần suất thay đổi, nhu cầu xử lý đặc biệt (LOB, thiếu PK), hoặc partitioning, gán step number hoặc mức ưu tiên cho từng bảng. Ví dụ:
+* Step 1: bảng nhỏ, thay đổi thấp
+
+* Step 2: bảng trung bình / thay đổi vừa phải
+
+* Step N: bảng rất lớn hoặc thay đổi mạnh
+
+Bạn cũng có thể đánh dấu **IGNORE** cho những bảng không muốn đưa vào task cụ thể, hoặc **SPECIAL_HANDLING** để tách riêng các bảng đặc biệt. 
 
 ---
 
-## Staging ER7 microservice
-
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+## Bước 5: Gộp bảng vào các task
+Dùng bảng control và phân loại bước để nhóm các bảng sao cho:
+* Mỗi nhóm có tải cân bằng (kích thước, mức độ thay đổi)
+* Bảng rất lớn (ví dụ > 2 TB) có thể được tách riêng
+* Bảng chứa LOB hoặc thiếu PK nên được nhóm cẩn trọng hoặc tách riêng
+* Các bảng thay đổi nhiều có thể được cách ly để tránh ảnh hưởng lẫn nhau
+* Số lượng task không quá nhiều, phù hợp với công suất của replication instance
+Mục tiêu là giảm lag, giảm cạnh tranh tài nguyên và phân bố tải đồng đều giữa các task. 
 
 ---
 
-## Tính năng mới trong giải pháp
+## Các yếu tố cần cân nhắc
+Khi nhóm và định kích thước task, hãy xem xét:
+* **Kích thước đối tượng database**: các bảng cực lớn nên cô lập hoặc xử lý riêng 
+* **Partitioned vs non-partitioned**: các bảng phân vùng có thể cho phép di chuyển song song từng phân vùng 
+* **Có PK / unique index**: DMS yêu cầu PK/UK để xử lý LOB hoặc tránh trùng lặp 
+* **Sử dụng LOB**: các cột LOB làm tăng độ phức tạp và chi phí sao chép — nên cô lập các bảng có LOB nặng 
+* **Khối lượng thay đổi (CDC)**: bảng có thay đổi thường xuyên nên được nhóm để tránh nghẽn áp dụng thay đổi 
+* **Parallelism & giới hạn tài nguyên**: khả năng của replication instance (CPU, I/O), băng thông mạng, v.v. quyết định số task hiệu quả 
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+---
+
+## Kiến trúc mẫu & luồng công việc
+Bài viết có sơ đồ minh họa cách phân loại nguồn bảng, nhóm và áp dụng các task song song (không thể hiện ở đây). 
+Nó cũng mô tả cách bảng control được duy trì trong quá trình di chuyển và dùng để theo dõi tiến độ, cũng như điều chỉnh nhóm khi cần. 
+
+---
+
+## Tóm tắt & khuyến nghị
+Bằng cách:
+* Phân tích metadata một cách có hệ thống
+
+* Phân loại và gộp bảng dựa trên đặc tính và workload
+
+* Cô lập bảng rủi ro cao (rất lớn, LOB, thiếu PK)
+
+* Cân bằng tải giữa các task
+
+Bạn có thể giảm rủi ro trong di chuyển, dự đoán kích thước task tốt hơn và đạt được migration mượt mà, hiệu suất cao.
+
+---
+
+## Tác Giả
+
+|
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Manojit Saha Sardar ![Image](/images/2-Proposal/manojit.png)| **Manojit** là **kỹ sư cơ sở dữ liệu cấp cao** tại AWS và được công nhận là **chuyên gia trong lĩnh vực** AWS DMS, Amazon RDS và Amazon RDS for PostgreSQL. Trong vai trò của mình tại AWS, anh **hợp tác với khách hàng** để giải quyết các **tình huống truyền dữ liệu khác nhau** và **hỗ trợ xử lý các thách thức** liên quan đến Amazon RDS for Oracle và Amazon RDS for PostgreSQL. | 
+| Chirantan Pandya ![Image](/images/2-Proposal/chirantan.png) | **Chirantan** là **kỹ sư cơ sở dữ liệu (AWS Countdown Premium)** và chuyên gia về AWS DMS và Amazon RDS for PostgreSQL. Tại AWS, anh **làm việc chặt chẽ với khách hàng** để cung cấp **hướng dẫn và hỗ trợ kỹ thuật** cho các dự án **di chuyển cơ sở dữ liệu**, cũng như các dự án liên quan đến **Amazon RDS for PostgreSQL và Oracle**. | 
+
+

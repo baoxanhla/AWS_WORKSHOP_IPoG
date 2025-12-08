@@ -15,7 +15,7 @@ chapter: false
 
 &emsp; **University:** FPT University
 
-&emsp; **Major:** Artificial Intelligence
+&emsp; **Major:** Artificial Intelligence (AI)
 
 &emsp; **Student ID:** SE181700
 

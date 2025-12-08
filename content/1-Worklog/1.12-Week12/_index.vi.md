@@ -7,48 +7,30 @@ pre: " <b> 1.12 </b> "
 
 ### Mục tiêu tuần 12:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Ôn tập hệ thống kiến thức serverless và AI 
+* Thiết kế chi tiết bảng database DynamoDB cho dự án và API
+* Kiểm tra chi tiết về kết nối giữa các dịch vụ trong dự án
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 2   | - Ôn tập và thiết kế database (DynamoDB) <br>&emsp; + Xem lại kiến thức về Partition Key (PK) và Sort Key (SK) <br> - **Thực hành** <br>&emsp; + Thiết kế Schema cho các bảng của dự án <br>&emsp; + Xác định các Access Pattern (Cách truy vấn dữ liệu) cho dự án.   | 24/11/2025   | 24/11/2025    | <https://cloudjourney.awsstudygroup.com/>  |
+| 3   | - Ôn tập và thiết kế API (API Gateway + Lambda): <br> &emsp; + Xem lại cách tạo REST API, Lambda Proxy Integration. <br> &emsp; + Liệt kê danh sách API endpoint cần thiết: POST, GET | 25/11/2025   | 25/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Ôn tập luồng tích hợp AI với Bedrock <br> &emsp; + Xem lại các cách gọi API Bedrock <br> &emsp; + Xem lại các Prompt Engineering cơ bản| 26/11/2025   | 26/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 5   | - Ôn tập bào mật và xác thực (Cognito + IAM ) <br> &emsp; + Xem lại luồng xác thực User Login -> Nhận Token -> Gửi Token lên API Gateway. <br> &emsp; + Xem lại IAM Policy về cách cấp quyền tối thiểu  | 27/11/2025   | 27/11/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 6   | - Ôn lại các cách giám sát hệ thống và vận hành <br> &emsp; + Xem lại CloudWatch để lên kế hoạch giám sát khi dự án chạy. <br> &emsp; + Xem lại Boto3 <br> &emsp; + Lập kế hoạch các bước triển khai dự án | 28/11/2025   | 28/11/2025 | <https://cloudjourney.awsstudygroup.com/> |
 
 
 ### Kết quả đạt được tuần 12:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hoàn thiện Schema Design cho DynamoDB:
+  * Thiết kế bảng dữ liệu cụ thể, tối ưu cho việc truy xuất dữ liệu
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Xác định rõ ràng giao diện kết nối:
+  * Định nghĩa rõ input/output cho các hàm Lambda. 
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+  * Nắm cách dùng thư viện boto3 để kết nối các "mảnh ghép" AWS lại với nhau.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Chuẩn bị sẵn sàng kịch bản cho AI (Prompt Strategy) để test Bedrock đúng như mong đợi
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hiểu rõ luồng đi của Identity (Danh tính) từ Cognito qua API Gateway xuống Lambda.

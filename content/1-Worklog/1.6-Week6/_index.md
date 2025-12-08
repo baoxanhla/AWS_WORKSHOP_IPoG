@@ -7,46 +7,63 @@ pre: " <b> 1.6. </b> "
 
 ### Week 6 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand AWS relational (SQL) and non-relational (NoSQL) data storage services based on storage needs.
+* Know how to deploy, operate, and optimize databases on AWS.
+* Understand Amazon ElastiCache for accelerating data access.
 
-### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Tasks to be implemented this week:
+| Day | Task | Start Date | End Date | Resources |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
+| Mon | - Learn about Amazon RDS and Aurora <br>&emsp; + Engines: MySQL, PostgreSQL... <br>&emsp; + Multi-AZ Availability <br>&emsp; + Read Replicas Performance <br>&emsp; + Automated Backups and Restoration | 10/13/2025 | 10/13/2025 | <https://cloudjourney.awsstudygroup.com/>|
+| Tue | - **Practice**: <br>&emsp; + Prepare environment for RDS instance: Create VPC, EC2, RDS Security Group, DB Subnet Group <br>&emsp; + Create EC2 Instance <br>&emsp; + Create RDS Database Instance in Private Subnet connected to EC2 <br>&emsp; + Deploy application <br>&emsp; + Automated Backup and Restore <br>&emsp; + Resource cleanup | 10/14/2025 | 10/14/2025 | <https://cloudjourney.awsstudygroup.com/> |
+| Wed | - Learn Amazon DynamoDB: NoSQL <br>&emsp; + Core components <br>&emsp; + Primary key and Sort key <br>&emsp; + Read/Write Capacity with On-demand or Provisioned <br> - **Practice**: Use AWS Console and Cloudshell to: <br>&emsp; + Create table <br>&emsp; + Write, read, and update data <br>&emsp; + Query data <br>&emsp; + Create global secondary index <br>&emsp; + Query secondary index | 10/15/2025 | 10/15/2025 | <https://cloudjourney.awsstudygroup.com/> |
+| Thu | - Learn AWS SDK Python packages (for Python) <br>&emsp; + Botocore <br>&emsp; + Boto3 <br> - **Practice**: <br>&emsp; + Configure AWS CLI with Boto3 library <br>&emsp; + Use Python to develop with DynamoDB: Create Table, write, read, update, delete data, Load sample data, Query, scan data, and delete table <br>&emsp; + Resource cleanup. | 10/16/2025 | 10/16/2025 | <https://cloudjourney.awsstudygroup.com/> |
+| Fri | - Learn Amazon ElastiCache <br>&emsp; + ElastiCache for Redis: Clusters <br>&emsp; + ElastiCache nodes <br>&emsp; + ElastiCache for Redis shards <br> - **Practice:** <br>&emsp; + Create IAM User Access Keys to configure AWS CLI + Use AWS Console and CLI to create ElastiCache cluster <br>&emsp; + Use AWS SDK to write and read data on ElastiCache: <br>&emsp;&nbsp;&nbsp; + Create and connect to Clusters <br>&emsp;&nbsp;&nbsp; + Set and Get strings <br>&emsp;&nbsp;&nbsp; + Set and Get a hash with multiple items <br>&emsp;&nbsp;&nbsp; + Publish (write) and subscribe (read) <br>&emsp;&nbsp;&nbsp; + Write and read from a stream | 10/17/2025 | 10/17/2025 | <https://cloudjourney.awsstudygroup.com/> |
 
 
-### Week 6 Achievements:
+### Results achieved in Week 6:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Understanding of Relational Databases: Amazon RDS & Aurora
+  * Grasped RDS architecture and database engines (MySQL, PostgreSQL, MariaDB, Oracle, SQL Server, Aurora).
+  * Understood the Multi-AZ Deployment mechanism.
+  
 
-* Successfully created and configured an AWS Free Tier account.
+[Image of AWS RDS Multi-AZ architecture]
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+  * Learned how to optimize reads using Read Replicas.
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+* Practical RDS System Deployment
+  * Self-deployed an architecture including: VPC, Subnet Groups, Security Group, EC2 Bastion Host, RDS Private Instance.
+  * Connected EC2 to RDS via security groups.
+  * Deployed an application connecting to RDS.
+  * Performed backup/restore and resource cleanup.
 
-* Used AWS CLI to perform basic operations such as:
+* Understood and used Amazon DynamoDB (NoSQL)
+  * Understood core concepts:
+    * Tables, Items, Attributes, Partition key, Sort key.
+    
+    * RCU/WCU, On-demand vs Provisioned.
+    * Global Secondary Index (GSI), Local Secondary Index (LSI).
+  * Learned how to optimize queries through proper key design.
+  * Practiced CRUD operations, Query, Scan, and GSI Query.
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+* Able to use AWS SDK for Python (Boto3)
+  * Configured AWS CLI & credentials to work with Boto3.
+  * Wrote Python code to:
+    * Create DynamoDB tables.
+    * Write / read / update / delete data.
+    * Scan data and Perform Conditional Queries.
+    * Delete tables and release resources.
+  * Understood Boto3 API structure and error handling.
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Understood and deployed Amazon ElastiCache for Redis
+  * Grasped ElastiCache architecture: node, shard, cluster, primary/replica.
+  
+  * Understood cluster mode enabled / disabled.
+  * Created ElastiCache Redis cluster using Console and CLI.
+  * Used AWS SDK to:
+    * Set/Get key-value.
+    * Set/Get hash.
+    * Publish/Subscribe.
+    * Work with Redis Streams.
+  * Understood the role of caching in application optimization.
