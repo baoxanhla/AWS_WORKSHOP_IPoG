@@ -1,6 +1,6 @@
 baseURL = 'https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/'
-relativeURLs = false
-canonifyURLs = false
+relativeURLs = true
+canonifyURLs = true
 
 # Change the default theme to be use when building the site with Hugo
 theme = "hugo-theme-learn"
