@@ -1,27 +1,25 @@
 ---
 title: "Workshop"
+
 weight: 5
 chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Secure Hybrid Access to S3 using VPC Endpoints
+# Building an AI Agent with AWS Bedrock
 
 #### Overview
 
-**AWS PrivateLink** provides private connectivity to AWS services from VPCs and your on-premises networks, without exposing your traffic to the Public Internet.
+**Amazon Bedrock** is a fully managed AI/ML service provided by AWS, allowing businesses to easily access and utilize foundational models such as Claude, Llama, Stable Diffusion, Amazon Titan, and others without the need to build complex AI infrastructure.
 
-In this lab, you will learn how to create, configure, and test VPC endpoints that enable your workloads to reach AWS services without traversing the Public Internet.
+We can call these models through the Bedrock API or Bedrock console without having to deploy AI infrastructure ourselves.
 
-You will create two types of endpoints to access Amazon S3: a Gateway VPC endpoint, and an Interface VPC endpoint. These two types of VPC endpoints offer different benefits depending on if you are accessing Amazon S3 from the cloud or your on-premises location
-+ **Gateway** - Create a gateway endpoint to send traffic to Amazon S3 or DynamoDB using private IP addresses.You route traffic from your VPC to the gateway endpoint using route tables.
-+ **Interface** - Create an interface endpoint to send traffic to endpoint services that use a Network Load Balancer to distribute traffic. Traffic destined for the endpoint service is resolved using DNS.
-
+![Workshop](/images/2-Proposal/image.png)
 #### Content
 
-1. [Workshop overview](5.1-Workshop-overview)
-2. [Prerequiste](5.2-Prerequiste/)
-3. [Access S3 from VPC](5.3-S3-vpc/)
-4. [Access S3 from On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (Bonus)](5.5-Policy/)
-6. [Clean up](5.6-Cleanup/)
+1. [Workshop Overview](5.1-Workshop-overview/)  
+2. [Preparing the AWS Environment](5.2-Prerequiste/)  
+3. [Building a Basic AI Agent](5.3-Bulit-Ai/)  
+4. [Creating API Gateway for the AI Agent](5.4-Api-gateway/)  
+5. [Testing and Deployment](5.5-Test)  
+6. [Cleaning Up Resources](5.6-Cleanup/)

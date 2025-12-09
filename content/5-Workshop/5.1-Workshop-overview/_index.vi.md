@@ -1,18 +1,30 @@
 ---
 title : "Giới thiệu"
+
 weight : 1
 chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### Giới thiệu về VPC Endpoint
+#### Giới thiệu về Amazon Bedrock
 
-+ Điểm cuối VPC (endpoint) là thiết bị ảo. Chúng là các thành phần VPC có thể mở rộng theo chiều ngang, dự phòng và có tính sẵn sàng cao. Chúng cho phép giao tiếp giữa tài nguyên điện toán của bạn và dịch vụ AWS mà không gây ra rủi ro về tính sẵn sàng.
-+ Tài nguyên điện toán đang chạy trong VPC có thể truy cập Amazon S3 bằng cách sử dụng điểm cuối Gateway. Interface Endpoint  PrivateLink có thể được sử dụng bởi tài nguyên chạy trong VPC hoặc tại TTDL.
+ **Amazon Bedrock** là dịch vụ machine learning được quản lý hoàn toàn của AWS, cung cấp khả năng truy cập đến các mô hình nền tảng (Foundation Models) hàng đầu từ Anthropic (Claude), Amazon (Titan), Meta (Llama), và nhiều nhà cung cấp khác thông qua API đơn giản.
++ Anthropic Claude - Claude 2, Claude 3 
++ Meta Llama - Llama 2
++ Amazon Titan - Titan Text
++ AI21 Labs - Jurassic-2
 
 #### Tổng quan về workshop
-Trong workshop này, bạn sẽ sử dụng hai VPC.
-+ **"VPC Cloud"** dành cho các tài nguyên cloud như Gateway endpoint và EC2 instance để kiểm tra.
-+ **"VPC On-Prem"** mô phỏng môi trường truyền thống như nhà máy hoặc trung tâm dữ liệu của công ty. Một EC2 Instance chạy phần mềm StrongSwan VPN đã được triển khai trong "VPC On-prem" và được cấu hình tự động để thiết lập đường hầm VPN Site-to-Site với AWS Transit Gateway. VPN này mô phỏng kết nối từ một vị trí tại TTDL (on-prem) với AWS cloud. Để giảm thiểu chi phí, chỉ một phiên bản VPN được cung cấp để hỗ trợ workshop này. Khi lập kế hoạch kết nối VPN cho production workloads của bạn, AWS khuyên bạn nên sử dụng nhiều thiết bị VPN để có tính sẵn sàng cao.
+Trong workshop này, bạn sẽ học cách:
++ Khám phá **Bedrock Console**
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
++ **Tạo AI Agent** với AWS Lambda
+
++ **Expose API** cho ứng dụng bên ngoài
+
++ **Kiểm thử** với giao diện web đơn giản
+
+![overview](/images/5-Workshop/5.1-Workshop-overview/diagram0.png)
+> [*Nguồn hình ảnh*](https://builder.aws.com/content/320c58tPPlu3RqvR4LZq8GKvYuT/agentic-ai-series-part-4-scaling-ai-agents-with-amazon-bedrock-agentcore)
+
+

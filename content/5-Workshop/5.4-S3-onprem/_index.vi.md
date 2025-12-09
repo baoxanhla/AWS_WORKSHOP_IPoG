@@ -1,19 +1,17 @@
 ---
-title : "Truy cập S3 từ môi trường truyền thống"
+title : "Thiết kế Agent"
+
 weight : 4 
 chapter : false
-pre : " <b> 5.4. </b> "
+pre : " <b> 5.4 </b> "
 ---
 
 #### Tổng quan
 
-+ Trong phần này, bạn sẽ tạo một Interface Endpoint để truy cập Amazon S3 từ môi trường truyền thống mô phỏng. Interface Endpoint sẽ cho phép bạn định tuyến đến Amazon S3 qua kết nối VPN từ môi trường truyền thống mô phỏng của bạn.
+Trong phần này, chúng ta sẽ tìm hiểu cách thiết kế một AI Agent hoạt động trên nền tảng Amazon Bedrock. Mục tiêu chính của chương là giúp bạn hiểu được Agent là gì, cách nó xử lý yêu cầu của người dùng, và tại sao Agent đóng vai trò quan trọng trong việc xây dựng các ứng dụng AI hiện đại.
 
-+ Tại sao nên sử dụng **Interface Endpoint**:
-    + Các Gateway endpoints chỉ hoạt động với các tài nguyên đang chạy trong VPC nơi chúng được tạo. Interface Endpoint  hoạt động với tài nguyên chạy trong VPC và cả tài nguyên chạy trong môi trường truyền thống. Khả năng kết nối từ môi trường truyền thống của bạn với aws cloud có thể được cung cấp bởi AWS Site-to-Site VPN hoặc AWS Direct Connect.
-    + Interface Endpoint cho phép bạn kết nối với các dịch vụ do AWS PrivateLink cung cấp. Các dịch vụ này bao gồm một số dịch vụ AWS, dịch vụ do các đối tác và khách hàng AWS lưu trữ trong VPC của riêng họ (gọi tắt là Dịch vụ PrivateLink endpoints) và các dịch vụ Đối tác AWS Marketplace. Đối với workshop này, chúng ta sẽ tập trung vào việc kết nối với Amazon S3.
-    
-![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
-
-
-
+![alt text](/images/5-Workshop/5.4-S3-onprem/agent.png)
+Ở phần tổng quan này, chúng ta sẽ phác thảo các thành phần quan trọng trong quá trình thiết kế một Agent, bao gồm cách xác định nhiệm vụ của Agent, mô tả hành vi mong muốn, cấu trúc workflow, lựa chọn mô hình nền tảng (Foundation Model), cũng như những nguyên tắc cần tuân thủ để Agent hoạt động ổn định và chính xác. Phần này cũng giới thiệu cách Agent tương tác với dữ liệu doanh nghiệp và tích hợp với các dịch vụ AWS nhằm triển khai vào môi trường thực tế.
+#### Nội Dung
+- [Tạo Knowledge base](5.4.1-prepare)
+- [Tạo Agent](5.4.2-Create-agent)

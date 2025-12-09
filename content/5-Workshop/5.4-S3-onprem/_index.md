@@ -1,19 +1,17 @@
 ---
-title : "Access S3 from on-premises"
+title : "Agent Design"
+
 weight : 4
 chapter : false
-pre : " <b> 5.4. </b> "
+pre : " <b> 5.4 </b> "
 ---
 
 #### Overview
 
-+ In this section, you will create an Interface endpoint to access Amazon S3 from a simulated on-premises environment. The Interface endpoint will allow you to route to Amazon S3 over a VPN connection from your simulated on-premises environment.
+In this section, we will learn how to design an AI Agent that operates on the Amazon Bedrock platform. The main goal of the chapter is to help you understand what an Agent is, how it handles user requests, and why Agents play an important role in building modern AI applications.
 
-+ Why using **Interface endpoint**: 
-    + Gateway endpoints only work with resources running in the VPC where they are created. Interface endpoints work with resources running in VPC, and also resources running in on-premises environments. Connectivty from your on-premises environment to the cloud can be provided by AWS Site-to-Site VPN or AWS Direct Connect.
-    + Interface endpoints allow you to connect to services powered by AWS PrivateLink. These services include some AWS services, services hosted by other AWS customers and partners in their own VPCs (referred to as PrivateLink Endpoint Services), and supported AWS Marketplace Partner services. For this workshop, we will focus on connecting to Amazon S3.
-
-![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
-
-
-
+![alt text](/images/5-Workshop/5.4-S3-onprem/agent.png)
+In this overview, we will outline the important components of the Agent design process, including how to define the Agent's tasks, describe the desired behavior, structure the workflow, choose the Foundation Model, as well as the principles to follow for the Agent to operate stably and accurately. This section also introduces how Agents interact with enterprise data and integrate with AWS services for deployment in production environments.
+#### Contents
+- [Create Knowledge base](5.4.1-prepare)
+- [Create Agent](5.4.2-Create-agent)

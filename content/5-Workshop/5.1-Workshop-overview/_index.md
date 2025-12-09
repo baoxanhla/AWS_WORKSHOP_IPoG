@@ -1,17 +1,28 @@
 ---
 title : "Introduction"
+
 weight : 1 
 chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### VPC endpoints
-+ **VPC endpoints** are virtual devices. They are horizontally scaled, redundant, and highly available VPC components. They allow communication between your compute resources and AWS services without imposing availability risks.
-+ Compute resources running in VPC can access  **Amazon S3**  using a Gateway endpoint. PrivateLink interface endpoints can be used by compute resources running in VPC or on-premises.
+#### About Amazon Bedrock
+**Amazon Bedrock** is a fully managed machine learning service from AWS, providing access to leading Foundation Models from Anthropic (Claude), Amazon (Titan), Meta (Llama), and many others through a simple API.
 
-#### Workshop overview
-In this workshop, you will use two VPCs. 
-+ **"VPC Cloud"** is for cloud resources such as a  **Gateway endpoint** and an EC2 instance to test with. 
-+ **"VPC On-Prem"** simulates an on-premises environment such as a factory or corporate datacenter. An EC2 instance running strongSwan VPN software has been deployed in "VPC On-prem" and automatically configured to establish a Site-to-Site VPN tunnel with AWS Transit Gateway. This VPN simulates connectivity from an on-premises location to the AWS cloud. To minimize costs, only one VPN instance is provisioned to support this workshop. When planning VPN connectivity for your production workloads, AWS recommends using multiple VPN devices for high availability.
++ Anthropic Claude - Claude 2, Claude 3
++ Meta Llama - Llama 2
++ Amazon Titan - Titan Text
++ AI21 Labs - Jurassic-2
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+#### Workshop Overview
+In this workshop, you will learn how to:
++ Explore **Bedrock Console**
+
++ **Create AI Agent** with AWS Lambda
+
++ **Expose API** to external applications
+
++ **Test** with a simple web interface
+
+![overview](/images/5-Workshop/5.1-Workshop-overview/diagram0.png)
+> [*Image source*](https://builder.aws.com/content/320c58tPPlu3RqvR4LZq8GKvYuT/agentic-ai-series-part-4-scaling-ai-agents-with-amazon-bedrock-agentcore)

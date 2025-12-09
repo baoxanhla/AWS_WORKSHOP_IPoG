@@ -5,13 +5,6 @@ chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
----
-title: "Blog 3"
-weight: 1
-chapter: false
-pre: " <b> 3.3. </b> "
----
-
 # Group database tables under AWS Database Migration Service tasks for PostgreSQL source engine
 by **Manojit Saha Sardar** and **Chirantan Pandya** | on **September 05, 2025** | in **Amazon Aurora**, **AWS Database Migration Service**, **Expert (400)**, **PostgreSQL compatible**, **RDS for PostgreSQL**, Technical How-to | Permalink
 

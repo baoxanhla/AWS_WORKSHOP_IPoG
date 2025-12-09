@@ -38,16 +38,16 @@
                 href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/3-blogstranslated/3.3-blog3/"
                 />
   </url><url>
-    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/</loc>
+    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.1-prepare/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/"
+                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.4-s3-onprem/5.4.1-prepare/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.3-s3-vpc/5.3.1-create-gwe/"
+                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.1-prepare/"
                 />
   </url><url>
     <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/4-eventparticipated/4.1-event1/</loc>
@@ -74,6 +74,18 @@
                 href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/4-eventparticipated/4.2-event2/"
                 />
   </url><url>
+    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.3-vpc-to-internet/5.3.1-create-gwe/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.3-vpc-to-internet/5.3.1-create-gwe/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.3-vpc-to-internet/5.3.1-create-gwe/"
+                />
+  </url><url>
     <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/</loc>
     <xhtml:link
                 rel="alternate"
@@ -96,18 +108,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.1-workshop-overview/"
-                />
-  </url><url>
-    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.1-prepare/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.4-s3-onprem/5.4.1-prepare/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.1-prepare/"
                 />
   </url><url>
     <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/1-worklog/1.1-week1/</loc>
@@ -230,16 +230,16 @@
                 href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/1-worklog/"
                 />
   </url><url>
-    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/</loc>
+    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.2-create-agent/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/"
+                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.4-s3-onprem/5.4.2-create-agent/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.2-create-interface-enpoint/"
+                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.2-create-agent/"
                 />
   </url><url>
     <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.2-prerequiste/</loc>
@@ -264,18 +264,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/2-proposal/"
-                />
-  </url><url>
-    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.3-s3-vpc/5.3.2-test-gwe/"
                 />
   </url><url>
     <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/1-worklog/1.10-week10/</loc>
@@ -314,28 +302,16 @@
                 href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/1-worklog/1.12-week12/"
                 />
   </url><url>
-    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.3-s3-vpc/</loc>
+    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.3-vpc-to-internet/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.3-s3-vpc/"
+                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.3-vpc-to-internet/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.3-s3-vpc/"
-                />
-  </url><url>
-    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.3-test-endpoint/"
+                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.3-vpc-to-internet/"
                 />
   </url><url>
     <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/3-blogstranslated/</loc>
@@ -372,30 +348,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/4-eventparticipated/"
-                />
-  </url><url>
-    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.4-dns-simulation/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.4-s3-onprem/5.4.4-dns-simulation/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.4-s3-onprem/5.4.4-dns-simulation/"
-                />
-  </url><url>
-    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.5-policy/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.5-policy/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.5-policy/"
                 />
   </url><url>
     <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/</loc>
@@ -444,6 +396,18 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/7-feedback/"
+                />
+  </url><url>
+    <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.5-policy/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/vi/5-workshop/5.5-policy/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/5-workshop/5.5-policy/"
                 />
   </url><url>
     <loc>https://baoxanhla.github.io/AWS_WORKSHOP_IPoG/categories/</loc>
