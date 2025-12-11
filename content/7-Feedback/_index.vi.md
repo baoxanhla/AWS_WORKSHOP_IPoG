@@ -5,7 +5,7 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
->Tại đây bạn có thể tự do đóng góp ý kiến cá nhân về những trải nghiệm khi tham gia chương trình First Cloud Journey, giúp team FCJ cải thiện những vấn đề còn thiếu sót dựa trên các hạng mục sau:
+Tôi muốn chia sẻ một vài ý kiến cá nhân về trải nghiệm khi tham gia chương trình First Cloud Journey, dựa trên những gì mình đã trải qua trong hành trình mới đầy thử thách này. Chương trình đã giúp tôi học hỏi và trải nghiệm được nhiều kiến thức hay và hấp dẫn.
 
 ### Đánh giá chung
 

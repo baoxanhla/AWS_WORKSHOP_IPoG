@@ -5,7 +5,7 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
->Here you can freely share your personal opinions regarding your experiences participating in the First Cloud Journey program, helping the FCJ team improve on shortcomings based on the following categories:
+I would like to share some personal thoughts about my experience participating in the First Cloud Journey program, based on what I have gone through during this challenging new journey. The program has helped me learn and experience many interesting and valuable insights.
 
 ### General Evaluation
 
